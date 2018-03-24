@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "42170640355",
+    "firebase_url": "https://wave-cdbfe.firebaseio.com",
+    "project_id": "wave-cdbfe",
+    "storage_bucket": "wave-cdbfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42170640355:android:4f02268bc0f3ff86",
+        "android_client_info": {
+          "package_name": "com.lantien.bediss.wave"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42170640355-g4td92au6254g6nv8jpk9onqo3gghpmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lantien.bediss.wave",
+            "certificate_hash": "fc38120732b08e8f5c730860e9c56b8be9a608c7"
+          }
+        },
+        {
+          "client_id": "42170640355-bppinc8imk18i0kjhvsf6eko7ia73snn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNpM24E59QZEeTyCFKV4gibLrDn0p0e3k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42170640355-bppinc8imk18i0kjhvsf6eko7ia73snn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
