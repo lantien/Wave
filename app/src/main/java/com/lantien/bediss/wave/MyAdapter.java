@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.lantien.bediss.wave.R;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+
     private String[] mDataset;
 
     // Provide a reference to the views for each data item

@@ -105,7 +105,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     }
 
     private void switchActivity() {
-        startActivity(new Intent(Login.this, MainActivity.class));
+        startActivity(new Intent(Login.this, Drawer.class));
     }
 
     @Override
