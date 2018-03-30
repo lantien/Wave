@@ -58,8 +58,6 @@ public class setProfil extends AppCompatActivity {
             }
         });
 
-
-
         Button getImage = findViewById(R.id.imageButtn);
 
         getImage.setOnClickListener(new View.OnClickListener() {
