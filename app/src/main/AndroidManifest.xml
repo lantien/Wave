@@ -19,6 +19,10 @@
         <activity
             android:name=".Drawer"
             android:label="@string/title_activity_drawer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Inscription"
+            android:label="@string/title_activity_inscription"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

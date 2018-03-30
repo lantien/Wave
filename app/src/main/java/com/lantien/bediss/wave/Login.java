@@ -7,9 +7,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -46,7 +48,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -108,9 +110,13 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         buttonInscri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               setContentView(R.layout.inscription_layout);
+                startActivity(new Intent(Login.this, Inscription.class));//SET INSCRIPTION
             }
         });
+
+
+
+
     }
 
     @Override
@@ -120,6 +126,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
     private void switchActivity() {
         startActivity(new Intent(Login.this, Drawer.class));
+        finish();
     }
 
     @Override

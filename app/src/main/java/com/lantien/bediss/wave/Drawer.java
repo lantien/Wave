@@ -139,6 +139,7 @@ public class Drawer extends AppCompatActivity
 
     private void switchActivity() {
         startActivity(new Intent(Drawer.this, Login.class));
+        finish();
     }
 
     @Override
