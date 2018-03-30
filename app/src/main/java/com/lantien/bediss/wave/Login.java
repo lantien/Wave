@@ -36,10 +36,13 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class Login extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
     private static final String TAG = "FROM LOGIN ACTIVITY : ";
+    private static final int RC_SIGN_IN = 9001;
+
+    private FirebaseAuth mAuth;
 
     GoogleApiClient mGoogleApiClient;
-    private static final int RC_SIGN_IN = 9001;
-    private FirebaseAuth mAuth;
+
+
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
@@ -47,17 +50,19 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mAuth = FirebaseAuth.getInstance();
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     Toast.makeText(getApplicationContext(), user.getEmail(), Toast.LENGTH_LONG).show();
-                    Log.d(TAG, "FROM EVEN AUTH onAuthStateChanged:signed_in:" + user.getUid());
+                    Log.e(TAG, "FROM EVEN AUTH onAuthStateChanged:signed_in:" + user.getUid());
                     switchActivity();
                 } else {
                     // User is signed out
-                    Log.d(TAG, "FROM EVEN AUTH onAuthStateChanged:signed_out");
+                    Log.e(TAG, "FROM EVEN AUTH onAuthStateChanged:signed_out");
                 }
                 // ...
             }
@@ -97,6 +102,15 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
                     signInWithEmail(email.getText().toString(), password.getText().toString());
             }
         });
+
+        Button buttonInscri = (Button) findViewById(R.id.inscription_button);
+
+        buttonInscri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               setContentView(R.layout.inscription_layout);
+            }
+        });
     }
 
     @Override
@@ -118,7 +132,6 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     protected void onStart() {
         super.onStart();
 
-        mAuth = FirebaseAuth.getInstance();
         mAuth.addAuthStateListener(mAuthListener);
 
     }
