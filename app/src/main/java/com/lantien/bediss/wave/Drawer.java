@@ -192,7 +192,8 @@ public class Drawer extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
-
+            Log.e(TAG, "manage clicked");
+            startActivity(new Intent(Drawer.this, setProfil.class));
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
