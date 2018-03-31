@@ -44,13 +44,11 @@ public class Inscription extends AppCompatActivity {
 
     private void inscription() {
 
-        String email, password;
-
         final EditText saisieEmail = findViewById(R.id.inputEmail);
-        EditText saisiePassword = findViewById(R.id.inputEmail);
+        final EditText saisiePassword = findViewById(R.id.inputEmail);
 
-        email = saisieEmail.getText().toString();
-        password = saisiePassword.getText().toString();
+        String email = saisieEmail.getText().toString();
+        String password = saisiePassword.getText().toString();
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

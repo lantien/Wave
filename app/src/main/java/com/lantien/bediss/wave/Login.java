@@ -93,19 +93,16 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
             }
         });
 
-        Button buttonLogin = (Button) findViewById(R.id.login);
+        Button buttonLogin = findViewById(R.id.login);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText email = (EditText) findViewById(R.id.email);
-                EditText password = (EditText) findViewById(R.id.password);
-
-                    signInWithEmail(email.getText().toString(), password.getText().toString());
+                signInWithEmail();
             }
         });
 
-        Button buttonInscri = (Button) findViewById(R.id.inscription_button);
+        Button buttonInscri = findViewById(R.id.inscription_button);
 
         buttonInscri.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +111,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
             }
         });
 
-
+        mAuth.addAuthStateListener(mAuthListener);
 
 
     }
@@ -139,13 +136,17 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     protected void onStart() {
         super.onStart();
 
-        mAuth.addAuthStateListener(mAuthListener);
-
     }
 
-    void signInWithEmail(String email, String password) {
+    void signInWithEmail() {
 
-        mAuth.signInWithEmailAndPassword(email, password)
+        final EditText email = findViewById(R.id.email);
+        final EditText password = findViewById(R.id.password);
+
+        String emailText = email.getText().toString();
+        String passwordText = password.getText().toString();
+
+        mAuth.signInWithEmailAndPassword(emailText, passwordText)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -160,13 +161,13 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
                             try {
                                 throw task.getException();
                             } catch(FirebaseAuthInvalidUserException e) {
-                                EditText mailInput = (EditText) findViewById(R.id.email);
-                                mailInput.setError("doesnt exist");
-                                mailInput.requestFocus();
+
+                                email.setError("doesnt exist");
+                                email.requestFocus();
                             } catch (FirebaseAuthInvalidCredentialsException e) {
-                                EditText mailInput = (EditText) findViewById(R.id.password);
-                                mailInput.setError("wrong password");
-                                mailInput.requestFocus();
+
+                                password.setError("wrong password");
+                                password.requestFocus();
                             }catch (Exception e) {
                                 Log.e(TAG, e.getMessage());
                             }

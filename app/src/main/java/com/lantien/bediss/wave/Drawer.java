@@ -46,6 +46,8 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
+import static com.lantien.bediss.wave.R.id.toolbar;
+
 public class Drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -83,57 +85,7 @@ public class Drawer extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        final View header=navigationView.getHeaderView(0);
-
-        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        mStorageRef = FirebaseStorage.getInstance().getReference();
-
-        StorageReference imageRef = mStorageRef.child(userID + "/1.jpg");
-
-        final long ONE_MEGABYTE = 512 * 512;
-        imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                // Data for "images/island.jpg" is returns, use this as needed
-                Log.e(TAG, "Succes image");
-                Drawable image = new BitmapDrawable(getResources(),BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
-
-                LinearLayout imgView = header.findViewById(R.id.picProfile);
-                imgView.setBackground(image);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
-                Log.e(TAG, "fail img");
-            }
-        });
-
-        DocumentReference docRef = db.collection("users").document(userID);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document != null && document.exists()) {
-                        Log.e(TAG, "DocumentSnapshot data: " + document.getData());
-
-                        TextView drawerName = (TextView) header.findViewById(R.id.nameProfile);
-                        drawerName.setText( document.getString("name") + " " + document.getString("nom"));
-
-                    } else {
-                        Log.e(TAG, "No such document");
-                    }
-                } else {
-                    Log.e(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
+        updateDrawer();
 
     }
 
@@ -193,7 +145,9 @@ public class Drawer extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
             Log.e(TAG, "manage clicked");
-            startActivity(new Intent(Drawer.this, setProfil.class));
+            //startActivity(new Intent(Drawer.this, setProfil.class));
+            Intent i = new Intent(this, setProfil.class);
+            startActivityForResult(i, 1);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -203,5 +157,70 @@ public class Drawer extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1 && resultCode == RESULT_OK)  {
+            Log.e(TAG, "ACTIVITY RESULT BACK DONC UPDATE");
+            updateDrawer();
+        } else {
+            Log.e(TAG, "ERREUR REQUEST CODE");
+        }
+    }//onActivityResult
+
+    private void updateDrawer() {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        final View header=navigationView.getHeaderView(0);
+
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+
+        StorageReference imageRef = mStorageRef.child(userID + "/1.jpg");
+
+        final long ONE_MEGABYTE = 512 * 512;
+        imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                // Data for "images/island.jpg" is returns, use this as needed
+                Log.e(TAG, "Succes image");
+                Drawable image = new BitmapDrawable(getResources(),BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
+
+                LinearLayout imgView = header.findViewById(R.id.picProfile);
+                imgView.setBackground(image);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+                Log.e(TAG, "fail img");
+            }
+        });
+
+        DocumentReference docRef = db.collection("users").document(userID);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null && document.exists()) {
+                        Log.e(TAG, "DocumentSnapshot data: " + document.getData());
+
+                        TextView drawerName = (TextView) header.findViewById(R.id.nameProfile);
+                        drawerName.setText( document.getString("name") + " " + document.getString("nom"));
+
+                    } else {
+                        Log.e(TAG, "No such document");
+                    }
+                } else {
+                    Log.e(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
     }
 }

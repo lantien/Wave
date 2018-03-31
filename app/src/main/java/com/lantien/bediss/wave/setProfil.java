@@ -1,5 +1,6 @@
 package com.lantien.bediss.wave;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -32,10 +33,14 @@ public class setProfil extends AppCompatActivity {
 
     Uri myImage;
 
+    String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_profil);
+
+        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         Button signInButton = findViewById(R.id.setChanges);
 
@@ -44,16 +49,23 @@ public class setProfil extends AppCompatActivity {
                 // Code here executes on main thread after user presses button
                 Log.d(TAG, "Upload clicked");
 
-                EditText nom = findViewById(R.id.inputNom);
-                EditText prenom = findViewById(R.id.inputPrenom);
+                    EditText nom = findViewById(R.id.inputNom);
+                    EditText prenom = findViewById(R.id.inputPrenom);
 
-                String Snom = nom.getText().toString();
-                String Sprenom = prenom.getText().toString();
+                    String Snom = nom.getText().toString();
+                    String Sprenom = prenom.getText().toString();
 
-                User user = new User( Snom, Sprenom);
-                String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    User user = new User(Snom, Sprenom);
 
-                db.collection("users").document(userID).set(user);
+                    db.collection("users").document(userID).set(user);
+
+                    if(myImage != null) {
+                        uploadImage();
+                    } else {
+                        goBack();
+                    }
+
+
 
             }
         });
@@ -73,7 +85,6 @@ public class setProfil extends AppCompatActivity {
 
     private void uploadImage() {
         StorageReference storageRef = storage.getReference();
-        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         StorageReference riversRef = storageRef.child(userID + "/1.jpg");
         UploadTask uploadTask = riversRef.putFile(myImage);
@@ -90,6 +101,7 @@ public class setProfil extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Log.d(TAG, "Upload succes");
+                goBack();
             }
         });
 
@@ -103,7 +115,6 @@ public class setProfil extends AppCompatActivity {
 
             myImage = data.getData( );
             Toast.makeText(this, "Get image URI", Toast.LENGTH_SHORT).show();
-            uploadImage();
 
         } else {
             Toast.makeText(this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
@@ -111,9 +122,11 @@ public class setProfil extends AppCompatActivity {
 
     }
 
-
     private void goBack() {
-        startActivity(new Intent(setProfil.this, Drawer.class));
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("result","cc");
+        setResult(Activity.RESULT_OK,returnIntent);
+        finish();
     }
 
 }
