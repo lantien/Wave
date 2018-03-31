@@ -66,7 +66,6 @@ public class Drawer extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
-
         TabLayout tabLayout = findViewById(R.id.tabs);
         ViewPager mPager = findViewById(R.id.content_drawer);
 

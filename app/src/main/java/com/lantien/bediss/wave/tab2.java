@@ -1,5 +1,7 @@
 package com.lantien.bediss.wave;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +34,13 @@ public class tab2 extends Fragment {
 
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
         rv.setHasFixedSize(true);
-        MyAdapter adapter = new MyAdapter(new String[]{"test one", "test two", "test three", "test four", "test five" , "test six" , "test seven",
-                "test one", "test two", "test three", "test four", "test five" , "test six"});
+
+        Bitmap bmp = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ic_menu_send);
+
+        Post [] myPost = {new Post("TITRE", bmp), new Post("TITRE", bmp), new Post("TITRE", bmp)};
+
+        MyAdapter adapter = new MyAdapter(myPost);
+
         rv.setAdapter(adapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());

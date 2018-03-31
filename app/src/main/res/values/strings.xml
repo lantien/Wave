@@ -15,4 +15,5 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_inscription">Inscription</string>
     <string name="title_activity_set_profil">setProfil</string>
+    <string name="title_activity_acceuil">acceuil</string>
 </resources>
