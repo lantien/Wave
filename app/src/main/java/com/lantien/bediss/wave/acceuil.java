@@ -22,6 +22,7 @@ public class acceuil extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(acceuil.this, Login.class));
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             }
         });
 
