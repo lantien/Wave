@@ -64,10 +64,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             }
         });
 
-        holder.m1TextView.setText("Turned it up should no valley cousin he. Speaking numerous ask did horrible packages set. Ashamed herself has distant can studied mrs. Led therefore its middleton perpetual fulfilled provision frankness. Small he drawn after among every three no. All having but you edward genius though remark one. \n" +
-                "\n" +
-                "In it except to so temper mutual tastes mother. Interested cultivated its continuing now yet are. Out interested acceptance our partiality affronting unpleasant why add. Esteem garden men yet shy course. Consulted up my tolerably sometimes perpetual oh. Expression acceptance imprudence particular had eat unsatiable. ");
-        //holder.mImageView.setImageBitmap(mDataset[position].getImageUrl());
+        holder.m1TextView.setText(mDataset.get(position).getTitle());
+        holder.mImageView.setImageBitmap(mDataset.get(position).getImageUrl());
 
     }
 

@@ -2,6 +2,8 @@ package com.lantien.bediss.wave;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,10 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -24,6 +29,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -38,6 +45,8 @@ public class tab2 extends Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     List<Post> myPost = new ArrayList<Post>();
+    private StorageReference mStorageRef;
+    Bitmap bmp;
 
     @Nullable
     @Override
@@ -58,7 +67,8 @@ public class tab2 extends Fragment {
 
         CollectionReference docRef = db.collection("generiqueFeed");
 
-        final Bitmap bmp = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ic_menu_send);
+        //final Bitmap bmp =
+
 
                 docRef
                 .get()
@@ -73,16 +83,44 @@ public class tab2 extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 
                                 Log.e(TAG, document.getId() + " => " + document.getData());
-                                myPost.add(new Post(document.getString("Title"),bmp));
+
+                                final QueryDocumentSnapshot docu = document;
+
+                                mStorageRef = FirebaseStorage.getInstance().getReference();
+
+                                StorageReference imageRef = mStorageRef.child(document.getString("posterID") + "/1.jpg");
+
+                                final long ONE_MEGABYTE = 512 * 512;
+                                imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                                    @Override
+                                    public void onSuccess(byte[] bytes) {
+                                        // Data for "images/island.jpg" is returns, use this as needed
+                                        Log.e(TAG, "Succes image FOR POST");
+                                        bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                                        myPost.add(new Post(docu.getString("Title"),bmp));
+                                        MyAdapter adapter = new MyAdapter(myPost);
+
+                                        rv.setAdapter(adapter);
+
+                                        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+                                        rv.setLayoutManager(llm);
+
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception exception) {
+                                        // Handle any errors
+                                        Log.e(TAG, "fail img FOR POST");
+                                    }
+                                });
+
+
 
                             }
 
-                            MyAdapter adapter = new MyAdapter(myPost);
 
-                            rv.setAdapter(adapter);
 
-                            LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-                            rv.setLayoutManager(llm);
+
 
                         } else {
                             Log.e(TAG, "Error getting documents.", task.getException());

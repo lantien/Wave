@@ -21,20 +21,11 @@
                 android:layout_height="38dp"></ImageView>
 
             <TextView
-                android:id="@+id/tv_text"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/testImage"
-                android:gravity="center"></TextView>
-
-            <TextView
                 android:id="@+id/tv_blah"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_text"
-                android:layout_toEndOf="@+id/testImage"
-                android:layout_toRightOf="@+id/testImage"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/imagePost"
                 android:text="blah blah blah......"></TextView>
 
         </RelativeLayout>
