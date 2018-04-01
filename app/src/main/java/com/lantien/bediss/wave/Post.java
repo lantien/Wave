@@ -7,6 +7,11 @@ public class Post {
     private String title;
     private Bitmap imageUrl;
 
+    public Post() {
+        title = "";
+        imageUrl = null;
+    }
+
     public Post(String title, Bitmap imageUrl){
 
         this.title = title;
