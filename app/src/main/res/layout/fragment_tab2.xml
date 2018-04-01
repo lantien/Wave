@@ -4,7 +4,9 @@
     android:id="@+id/recyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lantien.bediss.wave.tab2">
+    tools:context="com.lantien.bediss.wave.tab2"
+    android:background=""
+    >
 
 
     <android.support.v7.widget.RecyclerView
