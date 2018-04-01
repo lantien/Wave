@@ -15,11 +15,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imagePost"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
-                android:shape="ring"></ImageView>
+                android:shape="ring"></de.hdodenhof.circleimageview.CircleImageView>
 
             <TextView
                 android:id="@+id/tv_blah"
