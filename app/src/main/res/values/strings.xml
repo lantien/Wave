@@ -22,4 +22,5 @@
     <string name="mot_de_passe_oubli">Mot de passe oublié ?</string>
     <string name="mdp_oublie">Nom d'utilisateur ou mot de passe oublié ?</string>
     <string name="annuler">Annuler</string>
+    <string name="title_activity_tab4">tab4</string>
 </resources>

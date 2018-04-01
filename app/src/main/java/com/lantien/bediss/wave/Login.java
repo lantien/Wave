@@ -110,6 +110,11 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
     }
 
+    public void backButton(View v) {
+        Log.e(TAG, "ANNULER CLICKED");
+        super.onBackPressed();
+    }
+
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
 

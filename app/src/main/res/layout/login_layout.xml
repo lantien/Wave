@@ -82,7 +82,8 @@
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        />
 
     <TextView
         android:id="@+id/textView8"
@@ -93,7 +94,9 @@
         android:text="@string/annuler"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="backButton"
+        android:clickable="true"/>
 
     <Button
         android:id="@+id/login"

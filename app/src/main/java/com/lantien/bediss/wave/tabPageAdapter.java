@@ -22,8 +22,10 @@ public class tabPageAdapter extends FragmentStatePagerAdapter{
             return "tab0";
         } else if(position==1) {
             return "tab1";
-        } else  {
+        } else if(position==2){
             return "tab2";
+        } else {
+            return "tab3";
         }
     }
 
@@ -39,6 +41,8 @@ public class tabPageAdapter extends FragmentStatePagerAdapter{
             return new tab2();
         } else if (position==2){
             return new tab3();
+        } else if(position==3) {
+            return new tab4();
         }
 
         return null;
@@ -47,7 +51,7 @@ public class tabPageAdapter extends FragmentStatePagerAdapter{
     @Override
     public int getCount() {
         // Show 3 total pages.
-        return 3;
+        return 4;
     }
 
 }
