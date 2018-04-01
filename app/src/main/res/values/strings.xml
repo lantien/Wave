@@ -16,4 +16,10 @@
     <string name="title_activity_inscription">Inscription</string>
     <string name="title_activity_set_profil">setProfil</string>
     <string name="title_activity_acceuil">acceuil</string>
+    <string name="button">Button</string>
+    <string name="adresse_e_mail">Adresse e-mail</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="mot_de_passe_oubli">Mot de passe oublié ?</string>
+    <string name="mdp_oublie">Nom d'utilisateur ou mot de passe oublié ?</string>
+    <string name="annuler">Annuler</string>
 </resources>
