@@ -90,5 +90,11 @@ public class Inscription extends AppCompatActivity {
     }
 
 
+    public void backButton(View v) {
+        Log.e(TAG, "ANNULER CLICKED");
+        super.onBackPressed();
+    }
+
+
 
 }

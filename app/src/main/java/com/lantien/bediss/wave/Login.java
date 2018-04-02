@@ -138,7 +138,6 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
         mAuth.addAuthStateListener(mAuthListener);
 
-
     }
 
     public void backButton(View v) {
@@ -152,8 +151,11 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
     }
 
     private void switchActivity() {
-        startActivity(new Intent(Login.this, Drawer.class));
-        finish();
+        startActivity(new Intent(Login.this, Drawer.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
+    }
+
+    public void switchToForgotPassword(View v) {
+        startActivity(new Intent(Login.this, forgotPassword.class));
     }
 
     @Override

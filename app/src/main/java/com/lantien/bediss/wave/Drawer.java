@@ -211,7 +211,7 @@ public class Drawer extends AppCompatActivity
                         Log.e(TAG, "DocumentSnapshot data: " + document.getData());
 
                         TextView drawerName = (TextView) header.findViewById(R.id.nameProfile);
-                        drawerName.setText( document.getString("name") + " " + document.getString("nom"));
+                        drawerName.setText( document.getString("firstname") + " " + document.getString("lastname"));
 
                     } else {
                         Log.e(TAG, "No such document");
