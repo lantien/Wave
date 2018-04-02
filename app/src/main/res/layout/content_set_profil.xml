@@ -40,6 +40,7 @@
                 android:text="@string/Save"
                 android:textAllCaps="false"
                 android:textSize="14sp"
+                android:textColor="#FFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
