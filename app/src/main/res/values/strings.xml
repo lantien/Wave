@@ -20,7 +20,21 @@
     <string name="adresse_e_mail">Adresse e-mail</string>
     <string name="mot_de_passe">Mot de passe</string>
     <string name="mot_de_passe_oubli">Mot de passe oublié ?</string>
-    <string name="mdp_oublie">Nom d'utilisateur ou mot de passe oublié ?</string>
+    <string name="mdp_oublie">Nom d\'utilisateur ou mot de passe oublié ?</string>
     <string name="annuler">Annuler</string>
     <string name="title_activity_tab4">tab4</string>
+    <string name="pr_nom">Prénom</string>
+    <string name="nom">Nom</string>
+    <string name="d_te_de_naissance">Date de naissance</string>
+    <string name="title_activity_forgot_password">forgotPassword</string>
+    <string name="saisi_mdp_oublie">Saisissez votre e-mail et nous vous enverrons des instructions pour réinitialiser votre mot de passe.</string>
+    <string name="soumettre">Soumettre</string>
+    <string name="Nom">Nom</string>
+    <string name="Bio">Bio</string>
+    <string name="Localisation">Localisation</string>
+    <string name="SiteWeb">Site Web</string>
+    <string name="DateDeNaissance">Date de naissance</string>
+    <string name="Save">Enregistrer</string>
+    <string name="Photodecouverture">Photo de couverture</string>
+    <string name="ProfilPicture">Photo de profil</string>
 </resources>
