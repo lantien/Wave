@@ -16,12 +16,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Inscription extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
     public static final String TAG = "FROM INSCRI : ";
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,7 @@ public class Inscription extends AppCompatActivity {
     private void inscription() {
 
         final EditText saisieEmail = findViewById(R.id.inputEmail);
-        final EditText saisiePassword = findViewById(R.id.inputEmail);
+        final EditText saisiePassword = findViewById(R.id.inputPassword);
 
         String email = saisieEmail.getText().toString();
         String password = saisiePassword.getText().toString();
@@ -59,6 +62,7 @@ public class Inscription extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
+                            setUserData();
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -70,6 +74,19 @@ public class Inscription extends AppCompatActivity {
                         // ...
                     }
                 });
+    }
+
+    private void setUserData() {
+
+        EditText saisiePrenom = findViewById(R.id.inputPrenom);
+        EditText saisieNom = findViewById(R.id.inputNom);
+        EditText saisieBirthday = findViewById(R.id.inputNaissance);
+
+        User user = new User(saisieNom.getText().toString(),
+                saisiePrenom.getText().toString(),
+                saisieBirthday.getText().toString());
+
+        db.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(user);
     }
 
 

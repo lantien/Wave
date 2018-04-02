@@ -55,7 +55,7 @@ public class setProfil extends AppCompatActivity {
                     String Snom = nom.getText().toString();
                     String Sprenom = prenom.getText().toString();
 
-                    User user = new User(Snom, Sprenom);
+                    User user = new User(Snom, Sprenom, "03/03/2000");
 
                     db.collection("users").document(userID).set(user);
 

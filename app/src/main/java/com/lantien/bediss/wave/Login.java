@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +33,9 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
     private static final String TAG = "FROM LOGIN ACTIVITY : ";
     private static final int RC_SIGN_IN = 9001;
+
+    EditText email;
+    EditText password;
 
     private FirebaseAuth mAuth;
 
@@ -86,6 +90,33 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
             }
         });
 
+        EditText emailEnter = findViewById(R.id.email);
+        final EditText passwordEnter = findViewById(R.id.password);
+
+        emailEnter.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    passwordEnter.requestFocus();
+                }
+                return false;
+            }
+        });
+
+        passwordEnter.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    signInWithEmail();
+                }
+                return false;
+            }
+        });
+
         Button buttonLogin = findViewById(R.id.login);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -95,15 +126,15 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
             }
         });
 
-        /*
-        Button buttonInscri = findViewById(R.id.inscri_button;
+
+        Button buttonInscri = findViewById(R.id.inscri_button);
 
         buttonInscri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Login.this, Inscription.class));//SET INSCRIPTION
             }
-        });*/
+        });
 
         mAuth.addAuthStateListener(mAuthListener);
 

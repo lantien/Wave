@@ -76,14 +76,13 @@
         android:id="@+id/textView7"
         android:layout_width="141dp"
         android:layout_height="18dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/roboto"
         android:text="@string/mot_de_passe_oubli"
         android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 
     <TextView
         android:id="@+id/textView8"
@@ -106,5 +105,15 @@
         android:layout_marginTop="24dp"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <Button
+        android:id="@+id/inscri_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="24dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 </android.support.constraint.ConstraintLayout>
