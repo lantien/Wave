@@ -6,42 +6,107 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.lantien.bediss.wave.Inscription"
-    tools:showIn="@layout/activity_inscription">
+    tools:showIn="@layout/activity_inscription"
+    android:background="#F6F3FE">
 
 
     <EditText
         android:id="@+id/inputEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_width="230dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
-        android:hint="Adresse e-mail"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/adresse_e_mail"
         android:inputType="textEmailAddress"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/inputPrenom"
+        android:layout_width="230dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/pr_nom"
+        android:inputType="textPersonName"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
+
+    <EditText
+        android:id="@+id/inputNom"
+        android:layout_width="230dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/nom"
+        android:inputType="textPersonName"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputPrenom" />
+
+    <EditText
+        android:id="@+id/inputNaissance"
+        android:layout_width="230dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/d_te_de_naissance"
+        android:inputType="date"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputNom" />
 
     <EditText
         android:id="@+id/inputPassword"
+        android:layout_width="230dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/mot_de_passe"
+        android:inputType="textPassword"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputNaissance" />
+
+    <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:ems="10"
-        android:hint="Mot de passe"
-        android:inputType="textPassword"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#2C88CC"
+        android:fontFamily="@font/roboto"
+        android:text="@string/annuler"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="backButton"
+        android:clickable="true"/>
 
     <Button
         android:id="@+id/inscri_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
-        android:layout_marginTop="168dp"
-        android:text="S'inscrire"
+        android:layout_marginEnd="88dp"
+        android:layout_marginTop="48dp"
+        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+
+
 </android.support.constraint.ConstraintLayout>

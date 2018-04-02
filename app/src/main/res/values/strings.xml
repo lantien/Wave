@@ -23,12 +23,4 @@
     <string name="mdp_oublie">Nom d'utilisateur ou mot de passe oublié ?</string>
     <string name="annuler">Annuler</string>
     <string name="title_activity_tab4">tab4</string>
-    <string name="photodeprofil">Photo de profil</string>
-    <string name="photodecouverture">Photo de couverture</string>
-    <string name="Nom">Nom</string>
-    <string name="Enregistrer">Enregistrer</string>
-    <string name="Bio">Bio</string>
-    <string name="Localisation">Localisation</string>
-    <string name="SiteWeb">Site Web</string>
-    <string name="DateDeNaissance">Date De Naissance</string>
 </resources>

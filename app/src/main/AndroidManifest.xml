@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Login"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Drawer"
             android:label="@string/title_activity_drawer"
@@ -34,6 +34,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".forgotPassword"
+            android:label="@string/title_activity_forgot_password"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
