@@ -149,6 +149,10 @@ public class Drawer extends AppCompatActivity
             startActivityForResult(i, 1);
         } else if (id == R.id.nav_share) {
 
+            Log.e(TAG, "share clicked");
+            Intent i = new Intent(this, spotify_login.class);
+            startActivity(i);
+
         } else if (id == R.id.nav_send) {
 
         }

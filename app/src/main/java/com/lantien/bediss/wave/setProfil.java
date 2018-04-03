@@ -69,7 +69,7 @@ public class setProfil extends AppCompatActivity {
 
             }
         });
-
+/*
         Button getImage = findViewById(R.id.imageButtn);
 
         getImage.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +79,7 @@ public class setProfil extends AppCompatActivity {
                 startActivityForResult(intent, 0);
 
             }
-        });
+        });*/
 
     }
 

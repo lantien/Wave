@@ -177,41 +177,58 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
         String emailText = email.getText().toString();
         String passwordText = password.getText().toString();
+        boolean isSet = true;
 
-        mAuth.signInWithEmailAndPassword(emailText, passwordText)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+        if(emailText.matches("")) {
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Log.e(TAG, "signInWithEmail:failed", task.getException());
+            email.setError("SAISIE MAIL");
+            email.requestFocus();
+            isSet = false;
+        }
 
-                            try {
-                                throw task.getException();
-                            } catch(FirebaseAuthInvalidUserException e) {
+        if(passwordText.matches("")) {
 
-                                email.setError("doesnt exist");
-                                email.requestFocus();
-                            } catch (FirebaseAuthInvalidCredentialsException e) {
+            password.setError("SAISIE PASSWORD");
+            isSet = false;
+        }
 
-                                password.setError("wrong password");
-                                password.requestFocus();
-                            }catch (Exception e) {
-                                Log.e(TAG, e.getMessage());
+
+        if(isSet) {
+            mAuth.signInWithEmailAndPassword(emailText, passwordText)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+
+                            // If sign in fails, display a message to the user. If sign in succeeds
+                            // the auth state listener will be notified and logic to handle the
+                            // signed in user can be handled in the listener.
+                            if (!task.isSuccessful()) {
+                                Log.e(TAG, "signInWithEmail:failed", task.getException());
+
+                                try {
+                                    throw task.getException();
+                                } catch (FirebaseAuthInvalidUserException e) {
+
+                                    email.setError("doesnt exist");
+                                    email.requestFocus();
+                                } catch (FirebaseAuthInvalidCredentialsException e) {
+
+                                    password.setError("wrong password");
+                                    password.requestFocus();
+                                } catch (Exception e) {
+                                    Log.e(TAG, e.getMessage());
+                                }
+
+                            } else if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "SUCCED AUTH",
+                                        Toast.LENGTH_SHORT).show();
                             }
 
-                        } else if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "SUCCED AUTH",
-                                    Toast.LENGTH_SHORT).show();
+                            // ...
                         }
-
-                        // ...
-                    }
-                });
+                    });
+        }
     }
 
     //////////////////////////////////////////////////GOOGLE FUNC SIGN IN///////////////////////////
