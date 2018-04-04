@@ -48,7 +48,7 @@
 
             <intent-filter>
                 <data android:scheme="callback" />
-                <data android:host="com.lantien.bediss.wave " />
+                <data android:host="com.lantien.bediss.wave" />
             </intent-filter>
 
         </activity>
