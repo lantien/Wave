@@ -14,7 +14,7 @@
         android:id="@+id/inputEmail"
         android:layout_width="230dp"
         android:layout_height="38dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="@string/adresse_e_mail"
@@ -84,6 +84,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputNaissance" />
 
+    <EditText
+        android:id="@+id/inputPassword2"
+        android:layout_width="230dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/confirmermdp"
+        android:inputType="textPassword"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
@@ -101,12 +116,29 @@
     <Button
         android:id="@+id/inscri_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="88dp"
-        android:layout_marginTop="48dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="80dp"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputPassword2" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="51dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/aguafina_script"
+        android:text="Logo"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

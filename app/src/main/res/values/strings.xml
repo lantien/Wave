@@ -39,4 +39,6 @@
     <string name="ProfilPicture">Photo de profil</string>
     <string name="title_activity_spotify_login">spotify_login</string>
     <string name="title_activity_maps">Map</string>
+    <string name="confirmermdp">Confirmez votre mot de passe</string>
+    <string name="seconnecter">Se connecter</string>
 </resources>
