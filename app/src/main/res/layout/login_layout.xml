@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.lantien.bediss.wave.Login"
+    android:background="#FFFF"
     >
 
     <com.google.android.gms.common.SignInButton
@@ -44,14 +45,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:id="@+id/login"
+        android:layout_width="177dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="232dp"
+        android:background="@drawable/buttonlogin1"
+        android:text="Se connecter"
+        android:textColor="#F35B57"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_in_button" />
 
@@ -59,6 +61,7 @@
         android:id="@+id/email"
         android:layout_width="230dp"
         android:layout_height="38dp"
+        android:layout_marginTop="212dp"
         android:ems="10"
         android:fontFamily="@font/roboto"
         android:hint="@string/adresse_e_mail"
@@ -67,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="281dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/password"
@@ -88,14 +91,16 @@
         android:id="@+id/textView7"
         android:layout_width="141dp"
         android:layout_height="18dp"
+        android:layout_marginBottom="320dp"
         android:clickable="true"
         android:fontFamily="@font/roboto"
         android:onClick="switchToForgotPassword"
         android:text="@string/mot_de_passe_oubli"
         android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="609dp" />
+        app:layout_constraintHorizontal_bias="0.662"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
@@ -115,26 +120,28 @@
         android:layout_width="130dp"
         android:layout_height="35dp"
         android:layout_marginEnd="68dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/buttonsignup1"
         android:fontFamily="@font/roboto"
         android:text="facebook"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#FFF"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="541dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <Button
         android:id="@+id/inscri_button"
         android:layout_width="130dp"
         android:layout_height="35dp"
         android:layout_marginStart="68dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/buttonlogin1"
         android:fontFamily="@font/roboto"
         android:text="Google"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#FFF"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="541dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView11"
