@@ -20,6 +20,8 @@ import com.spotify.sdk.android.player.PlayerEvent;
 import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.player.SpotifyPlayer;
 
+//FC:38:12:07:32:B0:8E:8F:5C:73:08:60:E9:C5:6B:8B:E9:A6:08:C7
+
 public class spotify_login extends AppCompatActivity implements
         SpotifyPlayer.NotificationCallback, ConnectionStateCallback {
 
@@ -27,7 +29,7 @@ public class spotify_login extends AppCompatActivity implements
 
     private static final String CLIENT_ID = "ee1090ce0c414afe93644f768ac9b0d3\n";
 
-    private static final String REDIRECT_URI = "com.lantien.bediss.wave";
+    private static final String REDIRECT_URI = "com.lantien.bediss.wave://callback";
 
     private Player mPlayer;
 
@@ -57,7 +59,7 @@ public class spotify_login extends AppCompatActivity implements
         if (requestCode == REQUEST_CODE) {
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
 
-            Log.d("MainActivity", "ON RESULT" + response.getAccessToken());
+            Log.d("MainActivity", "ON RESULT" + response.getType());
 
             if (response.getType() == AuthenticationResponse.Type.TOKEN) {
                 Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
