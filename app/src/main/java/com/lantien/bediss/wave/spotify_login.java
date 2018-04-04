@@ -20,7 +20,6 @@ import com.spotify.sdk.android.player.PlayerEvent;
 import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.player.SpotifyPlayer;
 
-//FC:38:12:07:32:B0:8E:8F:5C:73:08:60:E9:C5:6B:8B:E9:A6:08:C7
 
 public class spotify_login extends AppCompatActivity implements
         SpotifyPlayer.NotificationCallback, ConnectionStateCallback {
