@@ -127,14 +127,14 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         });
 
 
-        Button buttonInscri = findViewById(R.id.inscri_button);
+       /* Button buttonInscri = findViewById(R.id.inscri_button);
 
         buttonInscri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Login.this, Inscription.class));//SET INSCRIPTION
             }
-        });
+        });*/
 
         mAuth.addAuthStateListener(mAuthListener);
 
