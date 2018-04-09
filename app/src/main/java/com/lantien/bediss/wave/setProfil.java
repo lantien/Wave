@@ -2,8 +2,10 @@ package com.lantien.bediss.wave;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.SignInButton;
@@ -23,6 +26,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.io.IOException;
 
 public class setProfil extends AppCompatActivity {
 
@@ -69,17 +74,6 @@ public class setProfil extends AppCompatActivity {
 
             }
         });
-/*
-        Button getImage = findViewById(R.id.imageButtn);
-
-        getImage.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 0);
-
-            }
-        });*/
 
     }
 
@@ -107,6 +101,12 @@ public class setProfil extends AppCompatActivity {
 
     }
 
+    public void openGallery(View v) {
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, 0);
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -114,11 +114,26 @@ public class setProfil extends AppCompatActivity {
         if (requestCode == 0 && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             myImage = data.getData( );
+            updateImage();
             Toast.makeText(this, "Get image URI", Toast.LENGTH_SHORT).show();
 
         } else {
             Toast.makeText(this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+    private void updateImage() {
+        ImageView mImageView = findViewById(R.id.setImagePost);
+        Bitmap bitmap;
+
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), myImage);
+            mImageView.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            Toast.makeText(this, "UpdateImage IOExce", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 

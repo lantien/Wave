@@ -2,6 +2,7 @@ package com.lantien.bediss.wave;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
@@ -26,9 +32,11 @@ public class spotify_login extends AppCompatActivity implements
 
     private static final int REQUEST_CODE = 109;
 
-    private static final String CLIENT_ID = "ee1090ce0c414afe93644f768ac9b0d3\n";
+    private static final String CLIENT_ID = "ee1090ce0c414afe93644f768ac9b0d3";
 
-    private static final String REDIRECT_URI = "com.lantien.bediss.wave://callback";
+    private static final String REDIRECT_URI = "yourcustomprotocol://callback";
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private Player mPlayer;
 
@@ -42,7 +50,7 @@ public class spotify_login extends AppCompatActivity implements
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
                 AuthenticationResponse.Type.TOKEN,
                 REDIRECT_URI);
-        builder.setScopes(new String[]{"user-read-private"});
+        builder.setScopes(new String[]{"user-read-private" , "streaming"});
         AuthenticationRequest request = builder.build();
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
@@ -58,12 +66,14 @@ public class spotify_login extends AppCompatActivity implements
         if (requestCode == REQUEST_CODE) {
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
 
-            Log.d("MainActivity", "ON RESULT" + response.getType());
+            Log.d("MainActivity", "ON RESULT : " + response.getType());
 
             if (response.getType() == AuthenticationResponse.Type.TOKEN) {
                 Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
 
                 Log.d("MainActivity", "ON RESULT : " + response.getAccessToken());
+
+                updateTokenUser(response.getAccessToken());
 
                 Spotify.getPlayer(playerConfig, this, new SpotifyPlayer.InitializationObserver() {
                     @Override
@@ -110,7 +120,7 @@ public class spotify_login extends AppCompatActivity implements
     @Override
     public void onLoggedIn() {
         Log.d("MainActivity", "User logged in");
-        mPlayer.playUri(null, "spotify:track:2TpxZ7JUBn3uw46aR7qd6V", 0, 0);
+        mPlayer.playUri(null, "spotify:track:5yidUoRMPzfGvarvfmFyGV", 0, 0);
     }
 
     @Override
@@ -131,6 +141,28 @@ public class spotify_login extends AppCompatActivity implements
     @Override
     public void onConnectionMessage(String message) {
         Log.d("MainActivity", "Received connection message: " + message);
+    }
+
+    private void updateTokenUser(String token) {
+
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        DocumentReference userRef = db.collection("users").document(userID);
+
+        userRef
+                        .update("spotifyToken", token)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("MainActivity", "DocumentSnapshot successfully updated!");
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("MainActivity", "Error updating document", e);
+                            }
+                        });
     }
 
 }

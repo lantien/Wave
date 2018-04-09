@@ -16,16 +16,20 @@ public class acceuil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acceuil);
 
-        Button buttonLogin = findViewById(R.id.angry_btn);
+        Button startButton = findViewById(R.id.start_button);
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
+        startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(acceuil.this, Login.class));
+                startActivity(new Intent(acceuil.this, Inscription.class));
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             }
         });
-
     }
 
+
+    public void goToLogin(View v) {
+        startActivity(new Intent(acceuil.this, Login.class));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+    }
 }

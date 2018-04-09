@@ -44,10 +44,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText5" />
+                app:layout_constraintTop_toBottomOf="@+id/setBirthday" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/setImage"
                 android:layout_width="410dp"
                 android:layout_height="115dp"
                 android:layout_marginEnd="8dp"
@@ -55,20 +55,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="108dp"
-                android:contentDescription="@string/ProfilPicture"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="openGallery"
+                android:clickable="true"/>
 
             <TextView
                 android:id="@+id/textView5"
@@ -85,8 +74,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/setImagePost"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:clickable="true"
+                android:onClick="openGallery"
+                android:shape="ring"
+                app:layout_constraintBottom_toBottomOf="@+id/setImage"
+                app:layout_constraintStart_toStartOf="parent"></de.hdodenhof.circleimageview.CircleImageView>
+
             <EditText
-                android:id="@+id/editText1"
+                android:id="@+id/setNom"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
@@ -116,7 +115,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/setBio"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginEnd="8dp"
@@ -132,7 +131,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/setLocalisation"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginEnd="10dp"
@@ -178,7 +177,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/setWebLink"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginEnd="10dp"
@@ -205,7 +204,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/setBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginEnd="10dp"
