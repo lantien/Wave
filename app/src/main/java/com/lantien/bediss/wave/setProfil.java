@@ -114,7 +114,7 @@ public class setProfil extends AppCompatActivity {
         if (requestCode == 0 && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             myImage = data.getData( );
-            updateImage();
+            uploadImage();
             Toast.makeText(this, "Get image URI", Toast.LENGTH_SHORT).show();
 
         } else {

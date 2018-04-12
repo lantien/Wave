@@ -135,7 +135,7 @@ public class Drawer extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+/*
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
@@ -155,7 +155,7 @@ public class Drawer extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
-        }
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -213,9 +213,6 @@ public class Drawer extends AppCompatActivity
                     DocumentSnapshot document = task.getResult();
                     if (document != null && document.exists()) {
                         Log.e(TAG, "DocumentSnapshot data: " + document.getData());
-
-                        TextView drawerName = (TextView) header.findViewById(R.id.nameProfile);
-                        drawerName.setText( document.getString("firstname") + " " + document.getString("lastname"));
 
                     } else {
                         Log.e(TAG, "No such document");
