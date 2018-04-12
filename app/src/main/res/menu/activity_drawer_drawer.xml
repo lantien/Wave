@@ -11,15 +11,15 @@
         <item
             android:id="@+id/playlist_gallery"
             android:icon="@drawable/ic_music"
-            android:title="Gallery" />
+            android:title="Playlists" />
         <item
             android:id="@+id/lists"
             android:icon="@drawable/ic_list_icon"
-            android:title="Slideshow" />
+            android:title="Lists" />
         <item
             android:id="@+id/settings"
             android:icon="@drawable/ic_settings_icon"
-            android:title="Tools" />
+            android:title="Settings" />
     </group>
 
     <item android:title="">
