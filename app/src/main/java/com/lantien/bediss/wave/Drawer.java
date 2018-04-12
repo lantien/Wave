@@ -44,6 +44,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 
 import static com.lantien.bediss.wave.R.id.toolbar;
@@ -135,10 +137,12 @@ public class Drawer extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-/*
-        if (id == R.id.nav_camera) {
+
+        if (id == R.id.profil) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            Intent i = new Intent(this, setProfil.class);
+            startActivityForResult(i, 1);
+        }/* else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -193,14 +197,14 @@ public class Drawer extends AppCompatActivity
                 Log.e(TAG, "Succes image");
                 Drawable image = new BitmapDrawable(getResources(),BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
 
-                LinearLayout imgView = header.findViewById(R.id.picProfile);
-                imgView.setBackground(image);
+                ImageView imgView = findViewById(R.id.picProfile);
+                imgView.setImageDrawable(image);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 // Handle any errors
-                Log.e(TAG, "fail img");
+                Log.e(TAG, "fail img : " + exception.getMessage());
             }
         });
 
@@ -213,6 +217,18 @@ public class Drawer extends AppCompatActivity
                     DocumentSnapshot document = task.getResult();
                     if (document != null && document.exists()) {
                         Log.e(TAG, "DocumentSnapshot data: " + document.getData());
+
+                        String name = document.getString("name");
+                        String username = document.getString("username");
+                        String currentPlaying = document.getString("currentlyPlaying");
+
+                        TextView txtName = findViewById(R.id.displayName);
+                        TextView txtUsername = findViewById(R.id.displayUsername);
+                        TextView txtCurrent = findViewById(R.id.displayCurrrentMusic);
+
+                        txtName.setText(name);
+                        txtUsername.setText("@" + username);
+                        txtCurrent.setText("Currently listening : " + currentPlaying);
 
                     } else {
                         Log.e(TAG, "No such document");

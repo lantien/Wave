@@ -29,38 +29,22 @@
 
     </de.hdodenhof.circleimageview.CircleImageView>
 
-    <android.support.design.widget.TextInputEditText
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/displayName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/roboto_bold"
-        android:onClick="@+id/profil"
-        android:text="@+id/displayname"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="10sp" />
+        android:text="TextView" />
 
-    <android.support.design.widget.TextInputEditText
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/displayUsername"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:textColor="#696868"
-        android:fontFamily="@font/roboto"
-        android:onClick="@+profil"
-        android:text="@+id/username"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="8sp" />
+        android:text="TextView" />
 
-    <android.support.design.widget.TextInputEditText
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/displayCurrrentMusic"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="-50dp"
-        android:text="@+id/songname"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="12sp" />
+        android:text="TextView" />
 
 </LinearLayout>
