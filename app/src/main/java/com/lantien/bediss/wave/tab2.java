@@ -95,6 +95,7 @@ public class tab2 extends Fragment {
                                     @Override
                                     public void onSuccess(byte[] bytes) {
                                         // Data for "images/island.jpg" is returns, use this as needed
+
                                         Log.e(TAG, "Succes image FOR POST");
                                         bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
                                         myPost.add(new Post(docu.getString("Title"),bmp));

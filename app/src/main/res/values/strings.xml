@@ -41,4 +41,5 @@
     <string name="title_activity_maps">Map</string>
     <string name="confirmermdp">Confirmez votre mot de passe</string>
     <string name="seconnecter">Se connecter</string>
+    <string name="title_activity_display_profil">displayProfil</string>
 </resources>

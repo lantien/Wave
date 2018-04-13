@@ -140,8 +140,10 @@ public class Drawer extends AppCompatActivity
 
         if (id == R.id.profil) {
             // Handle the camera action
-            Intent i = new Intent(this, setProfil.class);
-            startActivityForResult(i, 1);
+            String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            Intent i = new Intent(this, displayProfil.class);
+            i.putExtra("idProfil", userID);
+            startActivity(i);
         }/* else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
