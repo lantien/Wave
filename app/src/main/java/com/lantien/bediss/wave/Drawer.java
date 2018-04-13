@@ -143,7 +143,7 @@ public class Drawer extends AppCompatActivity
             String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
             Intent i = new Intent(this, displayProfil.class);
             i.putExtra("idProfil", userID);
-            startActivity(i);
+            startActivityForResult(i, 1);
         }/* else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -171,12 +171,7 @@ public class Drawer extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == 1 && resultCode == RESULT_OK)  {
-            Log.e(TAG, "ACTIVITY RESULT BACK DONC UPDATE");
-            updateDrawer();
-        } else {
-            Log.e(TAG, "ERREUR REQUEST CODE");
-        }
+        updateDrawer();
     }//onActivityResult
 
     private void updateDrawer() {
