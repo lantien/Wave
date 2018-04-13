@@ -1,5 +1,6 @@
 package com.lantien.bediss.wave;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -32,9 +33,13 @@ public class displayProfil extends AppCompatActivity {
 
     private static final String TAG = "FROM DISPLAY PROF : ";
 
+    private String userID;
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private StorageReference mStorageRef;
+
+    Button clickSetProf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,11 +106,13 @@ public class displayProfil extends AppCompatActivity {
                     }
                 });
 
-                String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                if(userID == receivedID) {
+                if(userID.equals(receivedID)) {
+
                     Button setProf = findViewById(R.id.editProfil);
                     setProf.setVisibility(View.VISIBLE);
+                    setListener();
                 }
 
             }
@@ -135,6 +142,31 @@ public class displayProfil extends AppCompatActivity {
                 Log.e(TAG, "fail img : " + exception.getMessage());
             }
         });
+    }
+
+    private void setListener() {
+        clickSetProf = findViewById(R.id.editProfil);
+
+        clickSetProf.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Log.e(TAG, "EDIT CLICKED");
+                Intent i = new Intent(getApplicationContext(), setProfil.class);
+                startActivityForResult(i, 1);
+
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1 && resultCode == RESULT_OK)  {
+            Log.e(TAG, "ACTIVITY RESULT BACK DONC UPDATE");
+            updateImage(userID);
+        } else {
+            Log.e(TAG, "ERREUR REQUEST CODE");
+        }
     }
 
 }
