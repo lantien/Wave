@@ -225,7 +225,7 @@ public class Drawer extends AppCompatActivity
 
                         txtName.setText(name);
                         txtUsername.setText("@" + username);
-                        txtCurrent.setText("Currently listening : " + currentPlaying);
+                        txtCurrent.setText(currentPlaying);
 
                     } else {
                         Log.e(TAG, "No such document");
