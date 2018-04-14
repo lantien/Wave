@@ -59,8 +59,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".displayProfil"
-            android:label="@string/title_activity_display_profil"
+            android:name=".show_profil"
+            android:label="@string/title_activity_show_profil"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
