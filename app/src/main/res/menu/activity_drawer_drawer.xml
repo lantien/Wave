@@ -7,18 +7,22 @@
         <item
             android:id="@+id/profil"
             android:icon="@drawable/ic_profile_icon"
+            android:fontFamily="@font/roboto"
             android:title="Profil" />
         <item
             android:id="@+id/playlist_gallery"
             android:icon="@drawable/ic_music"
+            android:fontFamily="@font/roboto"
             android:title="Playlists" />
         <item
             android:id="@+id/lists"
             android:icon="@drawable/ic_list_icon"
+            android:fontFamily="@font/roboto"
             android:title="Lists" />
         <item
             android:id="@+id/settings"
             android:icon="@drawable/ic_settings_icon"
+            android:fontFamily="@font/roboto"
             android:title="Settings" />
     </group>
 
