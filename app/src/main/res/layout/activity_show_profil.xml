@@ -18,99 +18,194 @@
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
-            android:layout_width="match_parent"
+                        android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:gravity="top">
 
-                <TextView
-                    android:id="@+id/displayName"
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="TextView"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/displayUsername" />
-
-                <TextView
-                    android:id="@+id/displayUsername"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="TextView"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/displayWebsite" />
-
-                <TextView
-                    android:id="@+id/displayWebsite"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="TextView"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/displayCurrentMusicProf" />
-
-                <TextView
-                    android:id="@+id/displayCurrentMusicProf"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="TextView"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/displayBio" />
-
-                <TextView
-                    android:id="@+id/displayBio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="20dp"
-                    android:text="TextView"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/displayLocation" />
-
-                <TextView
-                    android:id="@+id/displayLocation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Textview"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/displayPicture" />
+                    android:layout_height="80dp" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/displayPicture"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="60dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:shape="ring"
                     app:layout_collapseMode="parallax"
+                    android:background="@drawable/shapeprofilepicure"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
                 </de.hdodenhof.circleimageview.CircleImageView>
+
+                <TextView
+                    android:id="@+id/displayName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/displayPicture"
+                    android:layout_below="@+id/displayPicture"
+                    android:fontFamily="@font/roboto_bold"
+                    android:layout_marginTop="10dp"
+                    android:text="DisplayName"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#000000"
+                    android:textSize="16.5sp"
+                    />
+
+                <TextView
+                    android:id="@+id/displayUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/displayPicture"
+                    android:layout_below="@+id/displayName"
+                    android:fontFamily="@font/roboto"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#657786"
+                    android:textSize="15sp"
+                    />
+
+                <TextView
+                    android:id="@+id/displayBio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bio"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="170dp"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    />
+
+                <TextView
+                    android:id="@+id/displayLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:layout_marginTop="195dp"
+                    android:layout_marginStart="45dp"
+                    android:textSize="14sp"
+                    android:textColor="#657786"
+                    />
+
+                <TextView
+                    android:id="@+id/displayWebsite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SiteWeb"
+                    android:layout_marginTop="222dp"
+                    android:layout_marginStart="45dp"
+                    android:textSize="14sp"
+                    android:textColor="#657786"
+
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_placeholder_filled_point"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="198dp"
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_chain"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="225dp"
+                    />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center"
+                    android:layout_marginTop="255dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="100"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#3C4867"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:layout_marginTop="275dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Following"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#657786"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="90dp"
+                    android:gravity="center"
+                    android:layout_marginTop="255dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="100"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#3C4867"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:layout_marginTop="275dp"
+                    android:layout_marginStart="90dp"
+                    android:text="Followers"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="#657786"
+                    android:textSize="12sp"
+                    />
+
+            </RelativeLayout>
+
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <Button
                     android:id="@+id/editProfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="28dp"
-                    android:layout_marginTop="88dp"
-                    android:text="Button"
-                    android:visibility="invisible" />
-            </LinearLayout>
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="92dp"
+                    android:background="@drawable/ic_more"
+                    android:visibility=""
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.978"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
 
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -137,7 +232,8 @@
                 android:id="@+id/tabItem3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_3" />
+                android:text="@string/tab_text_3"
+                />
 
         </android.support.design.widget.TabLayout>
 
