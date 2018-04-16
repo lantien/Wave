@@ -19,8 +19,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/picProfile"
-        android:layout_width="42dp"
-        android:layout_height="47dp"
+        android:layout_width="59dp"
+        android:layout_height="55dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
         android:focusable="true"
@@ -34,9 +34,10 @@
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <TextView
-        android:id="@+id/displayUsername"
+        android:id="@+id/displayName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:fontFamily="@font/roboto_bold"
         android:text="Textview"
         android:textAppearance="@style/TextAppearance.AppCompat"
@@ -47,7 +48,7 @@
         tools:layout_conversion_absoluteWidth="57dp" />
 
     <TextView
-        android:id="@+id/displayName"
+        android:id="@+id/displayUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto"
@@ -55,8 +56,8 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#657786"
         android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/displayUsername"
-        app:layout_constraintTop_toBottomOf="@+id/displayUsername"
+        app:layout_constraintStart_toStartOf="@+id/displayName"
+        app:layout_constraintTop_toBottomOf="@+id/displayName"
         tools:layout_conversion_absoluteHeight="18dp"
         tools:layout_conversion_absoluteWidth="54dp" />
 
@@ -70,6 +71,7 @@
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#000000"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_conversion_absoluteHeight="19dp"

@@ -6,8 +6,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -209,14 +207,14 @@ public class show_profil extends AppCompatActivity {
                             TextView tvLocation = findViewById(R.id.displayLocation);
                             TextView tvBio = findViewById(R.id.displayBio);
                             TextView tvWebsite = findViewById(R.id.displayWebsite);
-                            TextView tvCurrentMusic = findViewById(R.id.displayCurrentMusicProf);
+                            //TextView tvCurrentMusic = findViewById(R.id.displayCurrentMusicProf);
 
                             tvUsername.setText(username);
                             tvName.setText(name);
                             tvLocation.setText(location);
                             tvBio.setText(bio);
                             tvWebsite.setText(website);
-                            tvCurrentMusic.setText(currentlyPlaying);
+                            //tvCurrentMusic.setText(currentlyPlaying);
 
                         } else {
 
