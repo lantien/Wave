@@ -112,6 +112,16 @@ public class tab2 extends Fragment {
                                     public void onFailure(@NonNull Exception exception) {
                                         // Handle any errors
                                         Log.e(TAG, "fail img FOR POST");
+                                        for(int i = 0; i < 15; i++) {
+                                            myPost.add(new Post("TITRE : " + i,bmp));
+                                        }
+
+                                        MyAdapter adapter = new MyAdapter(myPost);
+
+                                        rv.setAdapter(adapter);
+
+                                        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+                                        rv.setLayoutManager(llm);
                                     }
                                 });
 

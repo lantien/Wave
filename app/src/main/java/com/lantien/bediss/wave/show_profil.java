@@ -69,7 +69,7 @@ public class show_profil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_profil);
 
-        updateProfilText();
+        //updateProfilText();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -161,6 +161,10 @@ public class show_profil extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+
+            if(position==0) {
+                return new tab2();
+            }
             return PlaceholderFragment.newInstance(position + 1);
         }
 
@@ -170,7 +174,7 @@ public class show_profil extends AppCompatActivity {
             return 3;
         }
     }
-
+/*
     public void updateProfilText() { //
         Bundle b = getIntent().getExtras();
 
@@ -238,8 +242,8 @@ public class show_profil extends AppCompatActivity {
             }
 
         }
-    }
-
+    }*/
+/*
     public void updateImage(String idImg) {
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -264,8 +268,8 @@ public class show_profil extends AppCompatActivity {
                 Log.e(TAG, "fail img : " + exception.getMessage());
             }
         });
-    }
-
+    }*/
+/*
     private void setListener() {
         clickSetProf = findViewById(R.id.editProfil);
 
@@ -278,14 +282,14 @@ public class show_profil extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1 && resultCode == RESULT_OK)  {
             Log.e(TAG, "ACTIVITY RESULT BACK DONC UPDATE");
-            updateImage(userID);
+            //updateImage(userID);
         } else {
             Log.e(TAG, "ERREUR REQUEST CODE");
         }
