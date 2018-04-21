@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.regex.Pattern;
 
 public class Inscription extends AppCompatActivity {
 
@@ -45,6 +48,11 @@ public class Inscription extends AppCompatActivity {
 
     }
 
+    private boolean isValidEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
+    }
+
     private void inscription() {
 
         final EditText saisieEmail = findViewById(R.id.inputEmail);
@@ -60,12 +68,12 @@ public class Inscription extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+
                             Log.d(TAG, "createUserWithEmail:success");
                             setUserData();
 
                         } else {
-                            // If sign in fails, display a message to the user.
+
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             saisieEmail.setError(task.getException().getMessage());
                             saisieEmail.requestFocus();
