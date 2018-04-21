@@ -35,10 +35,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="63dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/roboto"
                 android:text="fflksdjflksdjflksdjflksdjflssdkjfhskjfhsdkfjhsdkjfhsdjkfhdkfjlsdkfjsdlfjsdlkfjsdlkfjsdlsd"
                 android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/displayName"
 
@@ -51,25 +52,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/roboto_bold"
+                android:fontFamily="@font/roboto_medium"
                 android:text="Namra"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 card_view:layout_constraintStart_toEndOf="@+id/imagePost"
-                card_view:layout_constraintTop_toBottomOf="@+id/displayNameRepost"
-                />
+                card_view:layout_constraintTop_toBottomOf="@+id/displayNameRepost" />
 
             <TextView
                 android:id="@+id/timepost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/roboto"
                 android:text="7h"
                 android:textColor="#898686"
-                android:textSize="15sp"
+                android:textSize="12sp"
                 android:visibility="visible"
                 card_view:layout_constraintStart_toEndOf="@+id/displayName"
                 card_view:layout_constraintTop_toBottomOf="@+id/displayNameRepost" />
@@ -118,6 +118,51 @@
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 />
 
+            <TextView
+                android:id="@+id/nbrepost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14"
+                android:textColor="#717070"
+                android:textSize="12sp"
+                card_view:layout_constraintStart_toEndOf="@+id/imageView5"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="9dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="9dp"
+                android:visibility="invisible"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="35"
+                android:textColor="#717070"
+                android:textSize="12sp"
+                card_view:layout_constraintStart_toEndOf="@+id/imageView6"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="9dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="invisible"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150"
+                android:textColor="#717070"
+                android:textSize="12sp"
+                card_view:layout_constraintStart_toEndOf="@+id/imageView7"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="9dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="7dp"
+                android:visibility="invisible"
+                />
 
             <!-- Icones après click -->
 
@@ -127,7 +172,7 @@
                 android:layout_width="14dp"
                 android:layout_height="14dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginStart="63"
+                android:layout_marginStart="63dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/ic_comment_bubble"
                 card_view:layout_constraintBottom_toBottomOf="parent"
@@ -160,6 +205,53 @@
                 card_view:layout_constraintStart_toEndOf="@+id/imageView6"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
 
+            <TextView
+                android:id="@+id/nbrepost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14"
+                android:textColor="#717070"
+                android:textSize="12sp"
+                card_view:layout_constraintStart_toEndOf="@+id/imageView5"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="9dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="9dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="35"
+                android:textColor="#303952"
+                android:textSize="12sp"
+                card_view:layout_constraintStart_toEndOf="@+id/imageView6"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="9dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="visible"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150"
+                android:textColor="#D80027"
+                android:textSize="12sp"
+                card_view:layout_constraintStart_toEndOf="@+id/imageView7"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="9dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="7dp"
+                android:visibility="visible"
+                />
+
+
+
             <!-- Repost -->
 
             <TextView
@@ -172,8 +264,8 @@
                 android:text="Namra"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textColor="#898686"
-                android:textSize="14sp"
-                android:visibility="gone"
+                android:textSize="12sp"
+                android:visibility="visible"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent" />
 
@@ -186,12 +278,11 @@
                 android:text="reposted"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textColor="#898686"
-                android:textSize="14sp"
-                android:visibility="gone"
-                card_view:layout_constraintStart_toEndOf="@+id/displayName"
-                card_view:layout_constraintTop_toTopOf="parent"
+                android:textSize="12sp"
+                android:visibility="visible"
 
-                />
+                card_view:layout_constraintStart_toEndOf="@+id/displayNameRepost"
+                card_view:layout_constraintTop_toTopOf="parent" />
 
 
             <ImageView
@@ -199,9 +290,9 @@
                 android:layout_width="14dp"
                 android:layout_height="15dp"
                 android:layout_marginStart="23dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/ic_repost"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent" />
 
