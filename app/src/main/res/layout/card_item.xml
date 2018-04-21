@@ -36,12 +36,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="52dp"
                 android:fontFamily="@font/roboto"
-                android:text="#OTD in 2013 @NASA their Antares Rocket from @NASA_Wallops. This was the first flight to launch from the Mid-Atlantic Regional Spaceport (MARS) Pad-0A at Wallops Flight Facility in Virginia and the first flight of Antares."
+                android:text="fflksdjflksdjflksdjflksdjflssdkjfhskjfhsdkfjhsdkjfhsdjkfhdkfjlsdkfjsdlfjsdlkfjsdlkfjsdlsd"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="15sp"
+                card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/displayName"
-                tools:layout_editor_absoluteX="140dp"
-                tools:layout_editor_absoluteY="21dp" />
+
+                />
 
 
             <TextView
@@ -56,7 +57,8 @@
                 android:textColor="#000000"
                 android:textSize="16sp"
                 card_view:layout_constraintStart_toEndOf="@+id/imagePost"
-                card_view:layout_constraintTop_toBottomOf="@+id/displayNameRepost" />
+                card_view:layout_constraintTop_toBottomOf="@+id/displayNameRepost"
+                />
 
             <TextView
                 android:id="@+id/timepost"
@@ -79,12 +81,14 @@
                 android:layout_width="14dp"
                 android:layout_height="14dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginStart="44dp"
+                android:layout_marginStart="52dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/ic_comment_bubble"
                 android:visibility="invisible"
                 card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                />
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -96,7 +100,9 @@
                 android:background="@drawable/ic_repost"
                 android:visibility="invisible"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView5"
-                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                />
 
             <ImageView
                 android:id="@+id/imageView7"
@@ -107,7 +113,9 @@
                 android:background="@drawable/ic_like"
                 android:visibility="invisible"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView6"
-                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                />
 
 
             <!-- Icones après click -->
@@ -118,9 +126,10 @@
                 android:layout_width="14dp"
                 android:layout_height="14dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginStart="44dp"
+                android:layout_marginStart="52dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/ic_comment_bubble"
+                card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
 
@@ -133,6 +142,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/ic_reposted"
                 android:visibility="visible"
+                card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView5"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
 
@@ -140,10 +150,12 @@
                 android:id="@+id/imageview10"
                 android:layout_width="13dp"
                 android:layout_height="13dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="11dp"
                 android:background="@drawable/ic_liked"
                 android:visibility="visible"
+                card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView6"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
 
