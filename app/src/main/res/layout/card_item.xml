@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -8,28 +10,189 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        card_view:cardCornerRadius="4dp"
+        card_view:cardCornerRadius="0dp"
         card_view:elevation="14dp">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imagePost"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:shape="ring"></de.hdodenhof.circleimageview.CircleImageView>
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:shape="ring"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/displayNameRepost">
+
+            </de.hdodenhof.circleimageview.CircleImageView>
 
             <TextView
                 android:id="@+id/tv_blah"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/imagePost"
-                android:text="blah blah blah......"></TextView>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:fontFamily="@font/roboto"
+                android:text="#OTD in 2013 @NASA their Antares Rocket from @NASA_Wallops. This was the first flight to launch from the Mid-Atlantic Regional Spaceport (MARS) Pad-0A at Wallops Flight Facility in Virginia and the first flight of Antares."
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="15sp"
+                card_view:layout_constraintTop_toBottomOf="@+id/displayName"
+                tools:layout_editor_absoluteX="140dp"
+                tools:layout_editor_absoluteY="21dp" />
 
-        </RelativeLayout>
+
+            <TextView
+                android:id="@+id/displayName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Namra"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                card_view:layout_constraintStart_toEndOf="@+id/imagePost"
+                card_view:layout_constraintTop_toBottomOf="@+id/displayNameRepost" />
+
+            <TextView
+                android:id="@+id/timepost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto"
+                android:text="7h"
+                android:textColor="#898686"
+                android:textSize="15sp"
+                android:visibility="visible"
+                card_view:layout_constraintStart_toEndOf="@+id/displayName"
+                card_view:layout_constraintTop_toBottomOf="@+id/displayNameRepost" />
+
+            <!-- Icones standard -->
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_comment_bubble"
+                android:visibility="invisible"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_repost"
+                android:visibility="invisible"
+                card_view:layout_constraintStart_toEndOf="@+id/imageView5"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/ic_like"
+                android:visibility="invisible"
+                card_view:layout_constraintStart_toEndOf="@+id/imageView6"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
+
+
+            <!-- Icones après click -->
+
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_comment_bubble"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
+
+            <ImageView
+                android:id="@+id/imageview9"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ic_reposted"
+                android:visibility="visible"
+                card_view:layout_constraintStart_toEndOf="@+id/imageView5"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
+
+            <ImageView
+                android:id="@+id/imageview10"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/ic_liked"
+                android:visibility="visible"
+                card_view:layout_constraintStart_toEndOf="@+id/imageView6"
+                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
+
+            <!-- Repost -->
+
+            <TextView
+                android:id="@+id/displayNameRepost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto"
+                android:text="Namra"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="#898686"
+                android:textSize="14sp"
+                android:visibility="gone"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto"
+                android:text="reposted"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="#898686"
+                android:textSize="14sp"
+                android:visibility="gone"
+                card_view:layout_constraintStart_toEndOf="@+id/displayName"
+                card_view:layout_constraintTop_toTopOf="parent"
+
+                />
+
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="14dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/ic_repost"
+                android:visibility="gone"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 
 </RelativeLayout>
