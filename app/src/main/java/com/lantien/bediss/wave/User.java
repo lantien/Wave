@@ -6,25 +6,25 @@ package com.lantien.bediss.wave;
 
 public class User {
 
-    private String lastname;
-    private String firstname;
+    private String username;
+    private String name;
     private String birthday;
 
     public User() {}
 
-    public User(String nomPara, String prenomPara, String birthdayPara) {
+    public User(String userPara, String nomPara, String birthdayPara) {
         // ...
-        lastname = nomPara;
-        firstname = prenomPara;
+        username = userPara;
+        name = nomPara;
         birthday = birthdayPara;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getUsername() {
+        return username;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getName() {
+        return name;
     }
 
     public String getBirthday() {

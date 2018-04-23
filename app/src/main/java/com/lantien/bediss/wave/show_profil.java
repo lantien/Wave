@@ -69,7 +69,7 @@ public class show_profil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_profil);
 
-        //updateProfilText();
+        updateProfilText();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -174,7 +174,7 @@ public class show_profil extends AppCompatActivity {
             return 3;
         }
     }
-/*
+
     public void updateProfilText() { //
         Bundle b = getIntent().getExtras();
 
@@ -242,8 +242,8 @@ public class show_profil extends AppCompatActivity {
             }
 
         }
-    }*/
-/*
+    }
+
     public void updateImage(String idImg) {
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -268,8 +268,8 @@ public class show_profil extends AppCompatActivity {
                 Log.e(TAG, "fail img : " + exception.getMessage());
             }
         });
-    }*/
-/*
+    }
+
     private void setListener() {
         clickSetProf = findViewById(R.id.editProfil);
 
@@ -282,7 +282,7 @@ public class show_profil extends AppCompatActivity {
 
             }
         });
-    }*/
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

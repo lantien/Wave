@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -23,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -56,6 +58,7 @@ public class tab2 extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_tab2, container, false);
 
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
+        rv.addItemDecoration(new DividerItemDecoration(getContext(), 0));
         rv.setHasFixedSize(true);
 
         getFeedGenerique(rv);
@@ -88,7 +91,7 @@ public class tab2 extends Fragment {
 
                                 mStorageRef = FirebaseStorage.getInstance().getReference();
 
-                                StorageReference imageRef = mStorageRef.child(document.getString("posterID") + "/1.jpg");
+                                StorageReference imageRef = mStorageRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/1.jpg");
 
                                 final long ONE_MEGABYTE = 512 * 512;
                                 imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
@@ -98,7 +101,10 @@ public class tab2 extends Fragment {
 
                                         Log.e(TAG, "Succes image FOR POST");
                                         bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                                        myPost.add(new Post(docu.getString("Title"),bmp));
+
+                                        for(int i = 0; i < 5; i++) {
+                                            myPost.add(new Post(docu.getString("Title"),bmp));
+                                        }
                                         MyAdapter adapter = new MyAdapter(myPost);
 
                                         rv.setAdapter(adapter);
@@ -112,7 +118,7 @@ public class tab2 extends Fragment {
                                     public void onFailure(@NonNull Exception exception) {
                                         // Handle any errors
                                         Log.e(TAG, "fail img FOR POST");
-                                        for(int i = 0; i < 15; i++) {
+                                        for(int i = 0; i < 5; i++) {
                                             myPost.add(new Post("TITRE : " + i,bmp));
                                         }
 
