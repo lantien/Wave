@@ -64,14 +64,14 @@
                 android:id="@+id/timepost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/roboto"
                 android:text="7h"
                 android:textColor="#898686"
                 android:textSize="12sp"
                 android:visibility="visible"
-                card_view:layout_constraintStart_toEndOf="@+id/displayName"
+                card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/displayNameRepost" />
 
             <!-- Icones standard -->

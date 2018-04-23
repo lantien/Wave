@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        card_view:cardCornerRadius="0dp"
+        card_view:elevation="14dp">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imagePost"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:shape="ring"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent">
+
+            </de.hdodenhof.circleimageview.CircleImageView>
+
+            <TextView
+                android:id="@+id/displayName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="kim namikaze"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                card_view:layout_constraintStart_toEndOf="@+id/imagePost"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/Username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/roboto"
+                android:text="\@KimsInterlude"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textColor="#898686"
+                android:textSize="11.4sp"
+                card_view:layout_constraintStart_toEndOf="@+id/imagePost"
+                card_view:layout_constraintTop_toBottomOf="@+id/displayName" />
+
+            <TextView
+                android:id="@+id/displayBio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto"
+                android:text="Bio"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                tools:layout_editor_absoluteX="4dp"
+                card_view:layout_constraintStart_toEndOf="@+id/imagePost"
+                card_view:layout_constraintTop_toBottomOf="@+id/Username"
+
+                />
+
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
