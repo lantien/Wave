@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_scrollFlags="scroll|enterAlways"
+        android:background="#FFFFFF"
         android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -20,32 +21,41 @@
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <RelativeLayout
+
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="top"
-                app:layout_collapseMode="parallax">
+                android:layout_height="match_parent">
 
                 <ImageView
+                    android:id="@+id/imageView4"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp" />
+                    android:layout_height="100"
+                    android:layout_marginTop="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/displayPicture"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="85dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:shape="ring"
-                    app:layout_collapseMode="parallax"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:civ_border_width="3dp"
                     app:civ_border_color="#FFFFFF"
-                    >
+                    app:civ_border_width="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
                 </de.hdodenhof.circleimageview.CircleImageView>
+
 
                 <TextView
                     android:id="@+id/displayName"
@@ -53,13 +63,18 @@
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/displayPicture"
                     android:layout_below="@+id/displayPicture"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/roboto_bold"
-                    android:layout_marginTop="10dp"
+                    android:gravity="center"
                     android:text="DisplayName"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textColor="#000000"
                     android:textSize="16.5sp"
-                    />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/displayPicture" />
 
                 <TextView
                     android:id="@+id/displayUsername"
@@ -67,61 +82,97 @@
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/displayPicture"
                     android:layout_below="@+id/displayName"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/roboto"
-                    android:text="TextView"
+                    android:gravity="center"
+                    android:text="\@Username"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textColor="#657786"
                     android:textSize="15sp"
-                    />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/displayName" />
 
+                <Button
+                    android:id="@+id/textView20"
+                    android:layout_width="81dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/follow_buttonshape"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Follow"
+                    android:textAllCaps="false"
+                    android:textColor="#3C4867"
+                    android:textSize="13sp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/editProfil"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
-            </RelativeLayout>
+                <Button
+                    android:id="@+id/textView21"
+                    android:layout_width="81dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/following_buttonshape"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Following"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/editProfil"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
-
-
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
                 <Button
                     android:id="@+id/editProfil"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="92dp"
+                    android:layout_marginStart="280dp"
+                    android:layout_marginTop="11dp"
                     android:background="@drawable/ic_more"
-                    android:visibility="invisible"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.978"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@+id/textView20"
+                    app:layout_constraintHorizontal_bias="0.736"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
 
                 <TextView
                     android:id="@+id/displayBio"
-                    android:layout_width="wrap_content"
+                    android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="52dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/roboto"
-                    android:text="Bio"
+                    android:gravity="center"
+                    android:maxLength="120"
+                    android:text="sdfkljdjsflksdjflksdjflksdfjlsdkfjdlskfjsdlfkjsdflksdjf"
                     android:textColor="#000000"
-                    android:textSize="14sp"
+                    android:textSize="14.5sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editProfil" />
+                    app:layout_constraintTop_toBottomOf="@+id/displayUsername" />
 
 
                 <TextView
                     android:id="@+id/displayLocation"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="45dp"
+                    android:layout_marginStart="81dp"
                     android:layout_marginTop="8dp"
-                    android:text="Location"
+                    android:text="New York City"
+                    android:maxLength="50"
                     android:textColor="#657786"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -129,25 +180,26 @@
 
                 <TextView
                     android:id="@+id/displayWebsite"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="48dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="250dp"
+                    android:layout_marginTop="8dp"
                     android:text="SiteWeb"
                     android:textColor="#657786"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/textView19"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/displayLocation" />
+                    app:layout_constraintTop_toBottomOf="@+id/displayBio"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/ic_placeholder_filled_point"
                     app:layout_constraintEnd_toStartOf="@+id/displayLocation"
                     app:layout_constraintHorizontal_bias="0.8"
@@ -156,76 +208,86 @@
 
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_marginEnd="12dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/ic_chain"
                     app:layout_constraintEnd_toStartOf="@+id/displayWebsite"
-                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintHorizontal_bias="0.983"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/displayBio" />
 
 
                 <TextView
                     android:id="@+id/textView15"
-                    android:layout_width="45dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="56"
+                    android:layout_marginBottom="2dp"
                     android:fontFamily="@font/roboto_bold"
                     android:gravity="center"
-                    android:text="100"
+                    android:text="1000"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textColor="#3C4867"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                    app:layout_constraintTop_toBottomOf="@+id/displayLocation"
+                    />
 
                 <TextView
                     android:id="@+id/textView16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="2dp"
                     android:fontFamily="@font/roboto"
                     android:text="Following"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textColor="#657786"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                    app:layout_constraintStart_toEndOf="@+id/textView15"
+                    app:layout_constraintTop_toBottomOf="@+id/displayLocation"
+
+                    />
 
                 <TextView
                     android:id="@+id/textView19"
-                    android:layout_width="50dp"
-
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="2dp"
                     android:fontFamily="@font/roboto_bold"
                     android:gravity="center"
                     android:text="100"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textColor="#3C4867"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@+id/textView15"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                    app:layout_constraintStart_toEndOf="@+id/textView16"
+                    app:layout_constraintTop_toBottomOf="@+id/displayLocation"
+                    />
 
 
                 <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="13dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginBottom="12dp"
                     android:fontFamily="@font/roboto"
                     android:text="Followers"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textColor="#657786"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toEndOf="@+id/textView16"
-                    app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                    app:layout_constraintStart_toEndOf="@+id/textView19"
+                    app:layout_constraintTop_toBottomOf="@+id/displayLocation"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
 
 
             </android.support.constraint.ConstraintLayout>

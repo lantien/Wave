@@ -37,7 +37,7 @@
                 android:fontFamily="@font/roboto"
                 android:text="fflksdjflksdjflksdjflksdjflssdkjfhskjfhsdkfjhsdkjfhsdjkfhdkfjlsdkfjsdlfjsdlkfjsdlkfjsdlsd"
                 android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/displayName"
 
