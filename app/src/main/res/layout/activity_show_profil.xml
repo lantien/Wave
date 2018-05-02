@@ -24,12 +24,13 @@
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:layout_collapseMode="parallax">
 
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="match_parent"
-                    android:layout_height="100"
+                    android:layout_height="100dp"
                     android:layout_marginTop="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -96,7 +97,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/displayName" />
 
                 <Button
-                    android:id="@+id/textView20"
+                    android:id="@+id/followButton"
                     android:layout_width="81dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="8dp"
@@ -107,13 +108,13 @@
                     android:textAllCaps="false"
                     android:textColor="#3C4867"
                     android:textSize="13sp"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/editProfil"
                     app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
                 <Button
-                    android:id="@+id/textView21"
+                    android:id="@+id/followerButton"
                     android:layout_width="81dp"
                     android:layout_height="24dp"
                     android:layout_marginEnd="8dp"
@@ -125,7 +126,7 @@
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     android:textSize="13sp"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/editProfil"
                     app:layout_constraintTop_toBottomOf="@+id/imageView4" />
@@ -139,7 +140,7 @@
                     android:layout_marginStart="280dp"
                     android:layout_marginTop="11dp"
                     android:background="@drawable/ic_more"
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     app:layout_constraintEnd_toStartOf="@+id/textView20"
                     app:layout_constraintHorizontal_bias="0.736"
                     app:layout_constraintStart_toStartOf="parent"
@@ -225,7 +226,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:layout_marginStart="56"
+                    android:layout_marginStart="56dp"
                     android:layout_marginBottom="2dp"
                     android:fontFamily="@font/roboto_bold"
                     android:gravity="center"

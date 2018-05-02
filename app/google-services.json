@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "42170640355-4js2cm51i77tnisu46lds85d8fuht5na.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lantien.bediss.wave",
+            "certificate_hash": "72d3392cae5783d4e127212d039b4936e6fc53bc"
+          }
+        },
+        {
           "client_id": "42170640355-g4td92au6254g6nv8jpk9onqo3gghpmk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
