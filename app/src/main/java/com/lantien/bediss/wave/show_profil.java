@@ -48,6 +48,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class show_profil extends AppCompatActivity {
 
@@ -316,13 +317,16 @@ public class show_profil extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Map<String, Object> data = new HashMap<>();
-                data.put("text", "test");
-
                 Log.d(TAG, "FOLLOW CLICKED");
 
+                //final DocumentReference sfDocRef = db.collection("follow").document(userID);
+                final DocumentReference followedRef = db.collection("follower").document(theOneID);
 
-                Task<String> myTask = mFunctions
+                Map<String, Object> data = new HashMap<>();
+                data.put("iFollow",theOneID);
+                data.put("id", userID);
+
+                Task<String> myTask =  mFunctions
                         .getHttpsCallable("followSomeone")
                         .call(data)
                         .continueWith(new Continuation<HttpsCallableResult, String>() {
@@ -332,7 +336,6 @@ public class show_profil extends AppCompatActivity {
                                 // has failed then getResult() will throw an Exception which will be
                                 // propagated down.
                                 String result = (String) task.getResult().getData();
-
                                 return result;
                             }
                         });
@@ -341,34 +344,21 @@ public class show_profil extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<String> task) {
 
-                        Log.d(TAG, "FUNCTION CALLED");
-                        if (!task.isSuccessful()) {
-                            Exception e = task.getException();
-                            if (e instanceof FirebaseFunctionsException) {
-                                FirebaseFunctionsException ffe = (FirebaseFunctionsException) e;
-                                FirebaseFunctionsException.Code code = ffe.getCode();
-                                Object details = ffe.getDetails();
-                            }
-
-                            // ...
+                        if(task.isSuccessful()) {
+                            Log.d(TAG, "succes call !" + task.getResult());
+                        } else {
+                            Log.d(TAG, "Fail call !" + task.getException());
                         }
-
-                        // ...
                     }
                 });
 
-/*
-                final DocumentReference sfDocRef = db.collection("follow").document(userID);
-                final DocumentReference followedRef = db.collection("follower").document(theOneID);
 
-                db.runTransaction(new Transaction.Function<Double>() {
+                /*db.runTransaction(new Transaction.Function<Double>() {
                     @Override
                     public Double apply(Transaction transaction) throws FirebaseFirestoreException {
 
                         DocumentSnapshot snapshot = transaction.get(sfDocRef);
                         DocumentSnapshot snapshotFollowed = transaction.get(followedRef);
-
-
 
                         double newFollow = snapshot.getDouble("nb_follow") + 1;
 
