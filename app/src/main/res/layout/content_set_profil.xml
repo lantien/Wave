@@ -15,13 +15,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="20dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -51,13 +50,13 @@
                 android:layout_width="410dp"
                 android:layout_height="115dp"
                 android:layout_marginEnd="8dp"
+                android:clickable="true"
                 android:contentDescription="@string/Photodecouverture"
+                android:onClick="openGallery"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:onClick="openGallery"
-                android:clickable="true"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -65,39 +64,71 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="13dp"
-                android:layout_marginTop="165dp"
-                android:fontFamily="@font/roboto"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@string/Nom"
                 android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.008"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/Divider1"
+                tools:layout_editor_absoluteY="189dp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/setImagePost"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="104dp"
                 android:clickable="true"
                 android:onClick="openGallery"
                 android:shape="ring"
-                app:layout_constraintBottom_toBottomOf="@+id/setImage"
-                app:layout_constraintStart_toStartOf="parent"></de.hdodenhof.circleimageview.CircleImageView>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </de.hdodenhof.circleimageview.CircleImageView>
+
+            <View
+                android:id="@+id/Divider1"
+                style="@style/Divider"
+                android:layout_marginTop="15dp"
+                android:background="#bfbfbf"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.008"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/setImagePost" />
 
             <EditText
                 android:id="@+id/setNom"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="180dp"
-                android:ems="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:text="hghgkjhg"
                 android:fontFamily="@font/roboto"
                 android:inputType="textPersonName"
-                android:textSize="15sp"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toTopOf="@+id/Divider1" />
+
+
+            <View
+                android:id="@+id/Divider2"
+                style="@style/Divider"
+                android:layout_marginStart="135dp"
+                android:layout_marginEnd="20"
+                android:layout_marginTop="10dp"
+                android:background="#d9d8d8"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.008"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/setNom" />
+
 
             <TextView
                 android:id="@+id/textView3"
@@ -105,122 +136,192 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="230dp"
-                android:fontFamily="@font/roboto"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@string/Bio"
                 android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.022"
+                app:layout_constraintHorizontal_bias="0.029"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/Divider2" />
+
 
             <EditText
                 android:id="@+id/setBio"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="245dp"
-                android:ems="10"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="99dp"
+                android:layout_marginTop="10dp"
+                android:background="null"
                 android:fontFamily="@font/roboto"
-                android:inputType="textPersonName"
-                android:textSize="15sp"
+                android:inputType="textMultiline"
+                android:maxLines="4"
+                android:text="dsfsd"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/Divider2" />
+
+
+            <View
+                android:id="@+id/Divider3"
+                style="@style/Divider"
+                android:layout_marginTop="90dp"
+                android:layout_marginStart="135dp"
+                android:layout_marginEnd="20dp"
+                android:background="#d9d8d8"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.111"
+                app:layout_constraintHorizontal_bias="0.008"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/Divider2" />
 
             <EditText
                 android:id="@+id/setLocalisation"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="310dp"
-                android:ems="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="46dp"
+                android:layout_marginTop="10dp"
+                android:background="@null"
                 android:fontFamily="@font/roboto"
                 android:inputType="textPersonName"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="Lyon"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/textView6"
+                app:layout_constraintTop_toBottomOf="@id/Divider3" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="295dp"
-                android:fontFamily="@font/roboto"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@string/Localisation"
                 android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.027"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/Divider3" />
+
+            <View
+                android:id="@+id/Divider4"
+                style="@style/Divider"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="135dp"
+                android:layout_marginEnd="20dp"
+                android:background="#d9d8d8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.008"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/setLocalisation" />
+
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="360dp"
-                android:fontFamily="@font/roboto"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@string/SiteWeb"
                 android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.025"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/Divider4" />
+
 
             <EditText
                 android:id="@+id/setWebLink"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="375dp"
-                android:ems="10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="66dp"
+                android:layout_marginTop="10dp"
+                android:background="@null"
                 android:fontFamily="@font/roboto"
                 android:inputType="textPersonName"
-                android:textSize="15sp"
+                android:text="Google.fr"
+                android:textSize="13sp"
+                app:layout_constraintHorizontal_bias="0.202"
+                app:layout_constraintStart_toEndOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@id/Divider4"
+                />
+
+            <View
+                android:id="@+id/Divider5"
+                style="@style/Divider"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="135dp"
+                android:layout_marginEnd="20dp"
+                android:background="#d9d8d8"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.008"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/setWebLink" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="425dp"
-                android:fontFamily="@font/roboto"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@string/DateDeNaissance"
                 android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="13sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/Divider5" />
 
             <EditText
                 android:id="@+id/setBirthday"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="440dp"
-                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:background="@null"
                 android:fontFamily="@font/roboto"
                 android:inputType="date"
-                android:textSize="15sp"
+                android:text="14 décembre 1996"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@id/Divider5" />
+
+            <View
+                android:id="@+id/Divider6"
+                style="@style/Divider"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="135dp"
+                android:layout_marginEnd="20dp"
+                android:background="#d9d8d8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.008"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/setBirthday" />
+
+
         </android.support.constraint.ConstraintLayout>
 
 
     </ScrollView>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="134dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </android.support.constraint.ConstraintLayout>
