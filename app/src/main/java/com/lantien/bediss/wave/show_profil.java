@@ -25,16 +25,30 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.firestore.Transaction;
+import com.google.firebase.functions.FirebaseFunctions;
+import com.google.firebase.functions.FirebaseFunctionsException;
+import com.google.firebase.functions.HttpsCallableResult;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class show_profil extends AppCompatActivity {
 
@@ -64,10 +78,14 @@ public class show_profil extends AppCompatActivity {
 
     Button clickSetProf;
 
+    private FirebaseFunctions mFunctions;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_profil);
+
+        mFunctions = FirebaseFunctions.getInstance();
 
         updateProfilText();
 
@@ -179,7 +197,7 @@ public class show_profil extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
 
         if( b != null ) {
-            String receivedID = b.getString("idProfil");
+            final String receivedID = b.getString("idProfil");
 
             updateImage(receivedID);
 
@@ -239,6 +257,27 @@ public class show_profil extends AppCompatActivity {
                 Button setProf = findViewById(R.id.editProfil);
                 setProf.setVisibility(View.VISIBLE);
                 setListener();
+            } else { // should we show follow button or not etc...
+
+                CollectionReference isFollowRef = db.collection("follow");
+
+                Query queryFollower = isFollowRef.whereEqualTo("userID", userID).whereEqualTo(receivedID, true);
+
+                queryFollower.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if(task.getResult().isEmpty()) {
+                            Button followButton = findViewById(R.id.followButton);
+                            followButton.setVisibility(View.VISIBLE);
+                            setFollowListener(followButton, userID, receivedID);
+                        } else {
+                            Button followButton = findViewById(R.id.followerButton);
+                            followButton.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+
             }
 
         }
@@ -266,6 +305,93 @@ public class show_profil extends AppCompatActivity {
             public void onFailure(@NonNull Exception exception) {
                 // Handle any errors
                 Log.e(TAG, "fail img : " + exception.getMessage());
+            }
+        });
+    }
+
+    private void setFollowListener(final Button follow, final String userID, final String theOneID) {
+
+
+
+        follow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Log.d(TAG, "FOLLOW CLICKED");
+
+                //final DocumentReference sfDocRef = db.collection("follow").document(userID);
+                final DocumentReference followedRef = db.collection("follower").document(theOneID);
+
+                Map<String, Object> data = new HashMap<>();
+                data.put("iFollow",theOneID);
+                data.put("id", userID);
+
+                Task<String> myTask =  mFunctions
+                        .getHttpsCallable("followSomeone")
+                        .call(data)
+                        .continueWith(new Continuation<HttpsCallableResult, String>() {
+                            @Override
+                            public String then(@NonNull Task<HttpsCallableResult> task) throws Exception {
+                                // This continuation runs on either success or failure, but if the task
+                                // has failed then getResult() will throw an Exception which will be
+                                // propagated down.
+                                String result = (String) task.getResult().getData();
+                                return result;
+                            }
+                        });
+
+                myTask.addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+
+                        if(task.isSuccessful()) {
+                            Log.d(TAG, "succes call !" + task.getResult());
+                        } else {
+                            Log.d(TAG, "Fail call !" + task.getException());
+                        }
+                    }
+                });
+
+
+                /*db.runTransaction(new Transaction.Function<Double>() {
+                    @Override
+                    public Double apply(Transaction transaction) throws FirebaseFirestoreException {
+
+                        DocumentSnapshot snapshot = transaction.get(sfDocRef);
+                        DocumentSnapshot snapshotFollowed = transaction.get(followedRef);
+
+                        double newFollow = snapshot.getDouble("nb_follow") + 1;
+
+                        double newFollwer = snapshotFollowed.getDouble("nb_follower") + 1;
+
+                        transaction.update(sfDocRef, "nb_follow", newFollow);
+                        transaction.update(followedRef, "nb_follower", newFollwer);
+
+                        Map<String, Object> newFollower = new HashMap<>();
+                        newFollower.put(theOneID, true);
+
+                        Map<String, Object> newFollowed = new HashMap<>();
+                        newFollowed.put(userID, true);
+
+                        transaction.update(sfDocRef, newFollower);
+                        transaction.update(followedRef, newFollowed);
+
+                        return null;
+
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<Double>() {
+                    @Override
+                    public void onSuccess(Double result) {
+                        Log.d(TAG, "Transaction success: " + result);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Transaction failure.", e);
+                    }
+                });*/
+
             }
         });
     }

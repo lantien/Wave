@@ -23,7 +23,7 @@
     <string name="mdp_oublie">Nom d\'utilisateur ou mot de passe oublié ?</string>
     <string name="annuler">Annuler</string>
     <string name="title_activity_tab4">tab4</string>
-    <string name="pr_nom">Prénom</string>
+    <string name="pr_nom">Nom d\'utilisateur</string>
     <string name="nom">Nom</string>
     <string name="d_te_de_naissance">Date de naissance</string>
     <string name="title_activity_forgot_password">forgotPassword</string>

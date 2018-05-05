@@ -32,7 +32,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-public class Drawer extends AppCompatActivity
+public class
+Drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "FROM DRAWER : ";
@@ -124,7 +125,7 @@ public class Drawer extends AppCompatActivity
             // Handle the camera action
             String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
             Intent i = new Intent(this, show_profil.class);
-            i.putExtra("idProfil", userID);
+            i.putExtra("idProfil", "FJT2AOB6EXPFAfUVT7QUu0IVCgn2");
             startActivityForResult(i, 1);
         }/* else if (id == R.id.nav_gallery) {
 

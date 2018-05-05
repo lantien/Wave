@@ -86,6 +86,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         signInButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
+                Log.d(TAG, "BUTTON CLICKED");
                 signIn();
             }
         });
@@ -233,6 +234,7 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
 
     //////////////////////////////////////////////////GOOGLE FUNC SIGN IN///////////////////////////
     private void signIn() {
+        Log.d(TAG, "CREATE ACT RESULT");
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -242,30 +244,24 @@ public class Login extends AppCompatActivity implements GoogleApiClient.OnConnec
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+
+
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            Log.d(TAG, "GOOD RC");
             if (result.isSuccess()) {
+                Log.d(TAG, "I M HERE");
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             } else {
                 // Google Sign In failed, update UI appropriately
                 // ...
+                Log.d(TAG, "FAIL GOOGLE" + result.getStatus());
             }
         }
     }
 
-    private void handleSignInResult(GoogleSignInResult result) {
-        Log.d(TAG, "handleSignInResult:" + result.isSuccess());
-        if (result.isSuccess()) {
-            // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
-
-        } else {
-            // Signed out, show unauthenticated UI.
-
-        }
-    }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());

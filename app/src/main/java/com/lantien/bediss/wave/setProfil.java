@@ -55,12 +55,12 @@ public class setProfil extends AppCompatActivity {
                 Log.d(TAG, "Upload clicked");
 
                     EditText nom = findViewById(R.id.inputNom);
-                    EditText prenom = findViewById(R.id.inputPrenom);
+                    EditText prenom = findViewById(R.id.inputUsername);
 
                     String Snom = nom.getText().toString();
                     String Sprenom = prenom.getText().toString();
 
-                    User user = new User(Snom, Sprenom, "03/03/2000");
+                    User user = new User(Snom, Sprenom, "03/03/2000", "","","","","");
 
                     db.collection("users").document(userID).set(user);
 
@@ -81,6 +81,7 @@ public class setProfil extends AppCompatActivity {
         StorageReference storageRef = storage.getReference();
 
         StorageReference riversRef = storageRef.child(userID + "/1.jpg");
+
         UploadTask uploadTask = riversRef.putFile(myImage);
 
         // Register observers to listen for when the download is done or if it fails
