@@ -69,6 +69,8 @@ Drawer extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         updateDrawer();
 
     }
