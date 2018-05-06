@@ -259,21 +259,28 @@ public class show_profil extends AppCompatActivity {
                 setListener();
             } else { // should we show follow button or not etc...
 
-                CollectionReference isFollowRef = db.collection("follow");
-
-                Query queryFollower = isFollowRef.whereEqualTo("userID", userID).whereEqualTo(receivedID, true);
-
-                queryFollower.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                DocumentReference followRef = db.collection("follow_"+userID).document(receivedID);
+                followRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Button followButton = findViewById(R.id.followerButton);
+                                followButton.setVisibility(View.VISIBLE);
+                                Log.d(TAG, "FOLLOWER");
 
-                        if(task.getResult().isEmpty()) {
-                            Button followButton = findViewById(R.id.followButton);
-                            followButton.setVisibility(View.VISIBLE);
-                            setFollowListener(followButton, userID, receivedID);
+                                unFollow(followButton, userID, receivedID);
+
+                            } else {
+                                Button followButton = findViewById(R.id.followButton);
+                                followButton.setVisibility(View.VISIBLE);
+                                setFollowListener(followButton, userID, receivedID);
+                                Log.d(TAG, "NOT FOLLOWER");
+                            }
                         } else {
-                            Button followButton = findViewById(R.id.followerButton);
-                            followButton.setVisibility(View.VISIBLE);
+                            Log.d(TAG, "get failed with ", task.getException());
+
                         }
                     }
                 });
@@ -351,46 +358,55 @@ public class show_profil extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+    }
 
 
-                /*db.runTransaction(new Transaction.Function<Double>() {
+    private void unFollow(Button unFollowButton, final String userID, final String theOneID) {
+
+        unFollowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final DocumentReference followDocRef = db.collection("follow_"+userID).document(theOneID);
+                final DocumentReference nbFollowDocRef = db.collection("follow_"+userID).document("nb_follow");
+
+                final DocumentReference followerDocRef = db.collection("follower_"+theOneID).document(userID);
+                final DocumentReference nbFollowerDocRef = db.collection("follower_"+theOneID).document("nb_follower");
+
+                db.runTransaction(new Transaction.Function<Void>() {
                     @Override
-                    public Double apply(Transaction transaction) throws FirebaseFirestoreException {
+                    public Void apply(Transaction transaction) throws FirebaseFirestoreException {
 
-                        DocumentSnapshot snapshot = transaction.get(sfDocRef);
-                        DocumentSnapshot snapshotFollowed = transaction.get(followedRef);
+                        DocumentSnapshot followDocNb = transaction.get(nbFollowDocRef);
+                        //DocumentSnapshot followerDocNb = transaction.get(nbFollowerDocRef);
 
-                        double newFollow = snapshot.getDouble("nb_follow") + 1;
+                        double nb_follow = followDocNb.getDouble("follow_count") - 1;
+                        //double nb_follower = followerDocNb.getDouble("follower_count") - 1;
 
-                        double newFollwer = snapshotFollowed.getDouble("nb_follower") + 1;
 
-                        transaction.update(sfDocRef, "nb_follow", newFollow);
-                        transaction.update(followedRef, "nb_follower", newFollwer);
+                        transaction.update(nbFollowDocRef, "follow_count", nb_follow);
+                        //transaction.update(nbFollowerDocRef, "follower_count", nb_follower);
 
-                        Map<String, Object> newFollower = new HashMap<>();
-                        newFollower.put(theOneID, true);
+                        transaction.delete(followDocRef);
+                        transaction.delete(followerDocRef);
 
-                        Map<String, Object> newFollowed = new HashMap<>();
-                        newFollowed.put(userID, true);
-
-                        transaction.update(sfDocRef, newFollower);
-                        transaction.update(followedRef, newFollowed);
-
+                        // Success
                         return null;
-
                     }
-                }).addOnSuccessListener(new OnSuccessListener<Double>() {
+                }).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(Double result) {
-                        Log.d(TAG, "Transaction success: " + result);
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "Transaction success!");
                     }
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Transaction failure.", e);
-                    }
-                });*/
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Transaction failure.", e);
+                            }
+                        });
 
             }
         });

@@ -376,7 +376,14 @@ public class Inscription extends AppCompatActivity {
         mapUsername.put("username", username);
         mapUsername.put("userID", userID);
 
+        HashMap<String, Number> mapFollow = new HashMap<>();
+        mapFollow.put("follow_count", 0);
 
+        HashMap<String, Number> mapFollower = new HashMap<>();
+        mapFollower.put("follower_count", 0);
+
+        db.collection("follow_"+userID).document("nb_follow").set(mapFollow);
+        db.collection("follower_"+userID).document("nb_follower").set(mapFollower);
         db.collection("mailList").document(email).set(mapEmail);
         db.collection("usernameList").document(username).set(mapUsername);
         startActivity(new Intent(Inscription.this, Login.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
