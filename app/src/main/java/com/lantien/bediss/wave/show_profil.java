@@ -353,6 +353,7 @@ public class show_profil extends AppCompatActivity {
 
                         if(task.isSuccessful()) {
                             Log.d(TAG, "succes call !" + task.getResult());
+                            switchFollow(theOneID);
                         } else {
                             Log.d(TAG, "Fail call !" + task.getException());
                         }
@@ -362,8 +363,31 @@ public class show_profil extends AppCompatActivity {
         });
     }
 
+    private void switchFollow(String receivedID) {
+        Button followerButton = findViewById(R.id.followerButton);
+        Button followButton = findViewById(R.id.followButton);
+
+        if(followerButton.getVisibility() == View.VISIBLE) {
+
+            followerButton.setVisibility(View.INVISIBLE);
+            followButton.setVisibility(View.VISIBLE);
+            setFollowListener(followButton, userID, receivedID);
+
+        } else {
+            followerButton.setVisibility(View.VISIBLE);
+            followButton.setVisibility(View.INVISIBLE);
+            unFollow(followButton, userID, receivedID);
+        }
+
+    }
+
+
+
+
 
     private void unFollow(Button unFollowButton, final String userID, final String theOneID) {
+
+        Log.d(TAG, "UNFOLLOW CLICKED");
 
         unFollowButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -380,14 +404,18 @@ public class show_profil extends AppCompatActivity {
                     public Void apply(Transaction transaction) throws FirebaseFirestoreException {
 
                         DocumentSnapshot followDocNb = transaction.get(nbFollowDocRef);
-                        //DocumentSnapshot followerDocNb = transaction.get(nbFollowerDocRef);
+                        DocumentSnapshot followerDocNb = transaction.get(nbFollowerDocRef);
 
                         double nb_follow = followDocNb.getDouble("follow_count") - 1;
-                        //double nb_follower = followerDocNb.getDouble("follower_count") - 1;
+                        double nb_follower = followerDocNb.getDouble("follower_count") - 1;
+
+                        Map<String, Object> unFollowData = new HashMap<>();
+                        unFollowData.put("follower_count",nb_follower);
+                        unFollowData.put("unfollowID",theOneID);
 
 
                         transaction.update(nbFollowDocRef, "follow_count", nb_follow);
-                        //transaction.update(nbFollowerDocRef, "follower_count", nb_follower);
+                        transaction.update(nbFollowerDocRef,unFollowData);
 
                         transaction.delete(followDocRef);
                         transaction.delete(followerDocRef);
@@ -399,6 +427,7 @@ public class show_profil extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "Transaction success!");
+                        switchFollow(theOneID);
                     }
                 })
                         .addOnFailureListener(new OnFailureListener() {
