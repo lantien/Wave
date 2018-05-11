@@ -1,10 +1,12 @@
 package com.lantien.bediss.wave;
 
+import android.app.Application;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -18,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -73,6 +76,8 @@ Drawer extends AppCompatActivity
 
         updateDrawer();
 
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
     }
 
     private void switchActivity() {
@@ -127,7 +132,7 @@ Drawer extends AppCompatActivity
             // Handle the camera action
             String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
             Intent i = new Intent(this, show_profil.class);
-            i.putExtra("idProfil","FJT2AOB6EXPFAfUVT7QUu0IVCgn2"); //"FJT2AOB6EXPFAfUVT7QUu0IVCgn2"
+            i.putExtra("idProfil",userID); //"FJT2AOB6EXPFAfUVT7QUu0IVCgn2"
             startActivityForResult(i, 1);
         }/* else if (id == R.id.nav_gallery) {
 
@@ -167,6 +172,8 @@ Drawer extends AppCompatActivity
 
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        ((MyProfil) this.getApplication()).setUserID(userID);
+
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
         StorageReference imageRef = mStorageRef.child(userID + "/1.jpg");
@@ -177,7 +184,11 @@ Drawer extends AppCompatActivity
             public void onSuccess(byte[] bytes) {
                 // Data for "images/island.jpg" is returns, use this as needed
                 Log.e(TAG, "Succes image");
+
+
                 Drawable image = new BitmapDrawable(getResources(),BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
+
+                ((MyProfil) getApplication()).setImage(image);
 
                 ImageView imgView = findViewById(R.id.picProfile);
                 imgView.setImageDrawable(image);
@@ -187,6 +198,7 @@ Drawer extends AppCompatActivity
             public void onFailure(@NonNull Exception exception) {
                 // Handle any errors
                 Log.e(TAG, "fail img : " + exception.getMessage());
+                ((MyProfil) getApplication()).setImage(null);
             }
         });
 
