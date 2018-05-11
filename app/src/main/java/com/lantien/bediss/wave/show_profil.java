@@ -326,6 +326,57 @@ public class show_profil extends AppCompatActivity {
 
                 Log.d(TAG, "FOLLOW CLICKED");
 
+                final DocumentReference followDocRef = db.collection("follow_"+userID).document(theOneID);
+                final DocumentReference nbFollowDocRef = db.collection("follow_"+userID).document("nb_follow");
+
+                final DocumentReference followerDocRef = db.collection("follower_"+theOneID).document(userID);
+                final DocumentReference nbFollowerDocRef = db.collection("follower_"+theOneID).document("nb_follower");
+
+                db.runTransaction(new Transaction.Function<Void>() {
+                    @Override
+                    public Void apply(Transaction transaction) throws FirebaseFirestoreException {
+
+                        DocumentSnapshot followDocNb = transaction.get(nbFollowDocRef);
+                        DocumentSnapshot followerDocNb = transaction.get(nbFollowerDocRef);
+
+                        double nb_follow = followDocNb.getDouble("follow_count") + 1;
+                        double nb_follower = followerDocNb.getDouble("follower_count") + 1;
+
+                        Map<String, Object> unFollowData = new HashMap<>();
+                        unFollowData.put("follower_count",nb_follower);
+                        unFollowData.put("followID",theOneID);
+
+
+                        transaction.update(nbFollowDocRef, "follow_count", nb_follow);
+                        transaction.update(nbFollowerDocRef,unFollowData);
+
+
+                        Map<String, Object> followedID = new HashMap<>();
+                        followedID.put("followedID", theOneID);
+
+                        Map<String, Object> followerID = new HashMap<>();
+                        followerID.put("followerID", userID);
+
+                        transaction.set(followDocRef, followedID);
+                        transaction.set(followerDocRef, followerID);
+
+                        // Success
+                        return null;
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "Transaction success!");
+                        switchFollow(theOneID);
+                    }
+                })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Transaction failure.", e);
+                            }
+                        });
+/*
                 //final DocumentReference sfDocRef = db.collection("follow").document(userID);
                 final DocumentReference followedRef = db.collection("follower").document(theOneID);
 
@@ -358,7 +409,7 @@ public class show_profil extends AppCompatActivity {
                             Log.d(TAG, "Fail call !" + task.getException());
                         }
                     }
-                });
+                });*/
             }
         });
     }
@@ -376,7 +427,7 @@ public class show_profil extends AppCompatActivity {
         } else {
             followerButton.setVisibility(View.VISIBLE);
             followButton.setVisibility(View.INVISIBLE);
-            unFollow(followButton, userID, receivedID);
+            unFollow(followerButton, userID, receivedID);
         }
 
     }
@@ -387,11 +438,13 @@ public class show_profil extends AppCompatActivity {
 
     private void unFollow(Button unFollowButton, final String userID, final String theOneID) {
 
-        Log.d(TAG, "UNFOLLOW CLICKED");
+
 
         unFollowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Log.d(TAG, "UNFOLLOW CLICKED");
 
                 final DocumentReference followDocRef = db.collection("follow_"+userID).document(theOneID);
                 final DocumentReference nbFollowDocRef = db.collection("follow_"+userID).document("nb_follow");
