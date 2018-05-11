@@ -171,7 +171,7 @@
                     android:text="New York City  "
                     android:textColor="#657786"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/locationImage"
                     app:layout_constraintTop_toBottomOf="@+id/displayBio" />
 
                 <TextView
@@ -184,26 +184,28 @@
                     android:text="https://soundcloud.com/monstercat"
                     android:textColor="#657786"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintStart_toEndOf="@+id/websiteImage"
                     app:layout_constraintTop_toBottomOf="@+id/displayLocation" />
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/locationImage"
                     android:layout_width="13dp"
                     android:layout_height="13dp"
                     android:layout_marginStart="56dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/ic_placeholder_filled_point"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/displayBio" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/websiteImage"
                     android:layout_width="13dp"
                     android:layout_height="13dp"
                     android:layout_marginStart="56dp"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/ic_chain"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/displayLocation" />
 

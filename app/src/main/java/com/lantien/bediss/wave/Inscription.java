@@ -1,5 +1,6 @@
 package com.lantien.bediss.wave;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -28,6 +30,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -357,12 +360,30 @@ public class Inscription extends AppCompatActivity {
                 });
     }
 
+    public static String getUserCountry(Context context) {
+        try {
+            final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+            final String simCountry = tm.getSimCountryIso();
+            if (simCountry != null && simCountry.length() == 2) { // SIM country code is available
+                return simCountry.toLowerCase(Locale.US);
+            }
+            else if (tm.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA) { // device is not 3G (would be unreliable)
+                String networkCountry = tm.getNetworkCountryIso();
+                if (networkCountry != null && networkCountry.length() == 2) { // network country code is available
+                    return networkCountry.toLowerCase(Locale.US);
+                }
+            }
+        }
+        catch (Exception e) { }
+        return null;
+    }
+
     private void setUserData(String username, String dateNaiss, String nom, String email) {
 
 
         User user = new User(username,
                             nom,
-                            dateNaiss, "", "", "", "", "");
+                            dateNaiss, getUserCountry(getApplicationContext()), "", "", "", "");
 
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 

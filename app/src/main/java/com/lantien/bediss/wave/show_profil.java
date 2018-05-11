@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -233,9 +234,31 @@ public class show_profil extends AppCompatActivity {
 
                             tvUsername.setText(username);
                             tvName.setText(name);
-                            tvLocation.setText(location);
                             tvBio.setText(bio);
-                            tvWebsite.setText(website);
+
+                            ImageView websiteImg = findViewById(R.id.websiteImage);
+                            ImageView locationImg = findViewById(R.id.locationImage);
+
+
+
+                            if(location.length() != 0) {
+
+                                locationImg.setVisibility(View.VISIBLE);
+                                tvLocation.setText(location);
+                            } else {
+                                tvLocation.setVisibility(View.GONE);
+                                tvLocation.setVisibility(View.GONE);
+                            }
+
+                            if(location.length() != 0) {
+
+                                websiteImg.setVisibility(View.VISIBLE);
+                                tvWebsite.setText(website);
+                            }
+                            else {
+                                tvWebsite.setVisibility(View.GONE);
+                                tvWebsite.setVisibility(View.GONE);
+                            }
                             //tvCurrentMusic.setText(currentlyPlaying);
 
                         } else {
