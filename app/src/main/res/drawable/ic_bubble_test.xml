@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:twitter="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:drawable="@ref/0x7f0203f3"
+        twitter:state_toggled_on="true" />
+
+    <item
+        android:state_checked="true"
+        android:drawable="@ref/0x7f0203f3" />
+
+    <item
+        android:drawable="@ref/0x7f0203f6" />
+
+</selector>

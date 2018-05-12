@@ -35,12 +35,11 @@
                 android:layout_marginStart="63dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/roboto"
-                android:text="fflksdjflksdjflksdjflksdjflssdkjfhskjfhsdkfjhsdkjfhsdjkfhdkfjlsdkfjsdlfjsdlkfjsdlkfjsdlsd"
+                android:text="Abeg you people should come and judge this kjdsh kj shfkjsdhfskdjfhsdkj matter. What should the wife do in this case? "
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="13sp"
                 card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/displayName"
-                />
+                card_view:layout_constraintTop_toBottomOf="@+id/displayName" />
 
 
             <TextView
@@ -75,21 +74,21 @@
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
+                android:layout_width="13dp"
+                android:layout_height="15dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="63dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/ic_comment_bubble"
-                android:visibility="invisible"
+                android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
 
             <ImageView
                 android:id="@+id/imageView6"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="15dp"
+                android:layout_height="19dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="65dp"
                 android:layout_marginTop="10dp"
@@ -101,13 +100,13 @@
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="13dp"
+                android:layout_width="12dp"
                 android:layout_height="13dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="70dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/ic_like"
-                android:visibility="visible"
+                android:visibility="invisible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView6"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -118,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="9dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="10dp"
                 android:text="14"
                 android:textColor="#717070"
                 android:textSize="12sp"
@@ -132,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="10dp"
                 android:text="35"
                 android:textColor="#717070"
                 android:textSize="12sp"
@@ -146,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="10dp"
                 android:text="150"
                 android:textColor="#717070"
                 android:textSize="12sp"
@@ -159,21 +158,9 @@
 
 
             <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="63dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ic_comment_bubble"
-                card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
-
-            <ImageView
                 android:id="@+id/imageview9"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="15dp"
+                android:layout_height="19dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="65dp"
                 android:layout_marginTop="10dp"
@@ -185,13 +172,13 @@
 
             <ImageView
                 android:id="@+id/imageview10"
-                android:layout_width="13dp"
+                android:layout_width="12dp"
                 android:layout_height="13dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="70dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/ic_liked"
-                android:visibility="invisible"
+                android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView6"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -202,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="9dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="10dp"
                 android:text="14"
                 android:textColor="#717070"
                 android:textSize="12sp"
@@ -215,7 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="10dp"
                 android:text="35"
                 android:textColor="#303952"
                 android:textSize="12sp"
@@ -229,7 +216,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="10dp"
                 android:text="150"
                 android:textColor="#D80027"
                 android:textSize="12sp"
