@@ -1,5 +1,6 @@
 package com.lantien.bediss.wave;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -600,5 +601,13 @@ public class show_profil extends AppCompatActivity {
         } else {
             Log.e(TAG, "ERREUR REQUEST CODE");
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("result","cc");
+        setResult(Activity.RESULT_OK,returnIntent);
+        finish();
     }
 }

@@ -1,10 +1,12 @@
 package com.lantien.bediss.wave;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -17,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -162,22 +165,40 @@ Drawer extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        setImgDrawer();
+        Log.d(TAG, "RESULT HANDLE");
+
+
         setDrawer();
+        setImgDrawer();
+
     }
 
     private void setDrawer() {
 
-        TextView txtName = findViewById(R.id.displayName);
-        TextView txtUsername = findViewById(R.id.displayUsername);
-        TextView txtnb_Follow = findViewById(R.id.displayFollowDrawer);
-        TextView txtnb_Follower = findViewById(R.id.displayFollowerDrawer);
 
-        txtName.setText(((MyProfil) getApplication()).getName());
-        txtUsername.setText("@" + ((MyProfil) getApplication()).getUsername());
-        txtnb_Follow.setText(String.valueOf(((MyProfil) getApplication()).getNb_follow()));
-        txtnb_Follower.setText(String.valueOf(((MyProfil) getApplication()).getNb_follower()));
+    Log.d(TAG, "JE MET LE NOM : " + ((MyProfil) getApplication()).getName());
 
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        final View headerView = navigationView.getHeaderView(0);
+
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                // Code here will run in UI thread
+
+                TextView txtName = headerView.findViewById(R.id.displayName);
+                TextView txtUsername = headerView.findViewById(R.id.displayUsername);
+                TextView txtnb_Follow = headerView.findViewById(R.id.displayFollowDrawer);
+                TextView txtnb_Follower = headerView.findViewById(R.id.displayFollowerDrawer);
+
+                Log.d(TAG, "WHAT I CAN READ : " + txtName.getText());
+
+                txtName.setText(((MyProfil) getApplication()).getName());
+                txtUsername.setText("@" + ((MyProfil) getApplication()).getUsername());
+                txtnb_Follow.setText(String.valueOf(((MyProfil) getApplication()).getNb_follow()));
+                txtnb_Follower.setText(String.valueOf(((MyProfil) getApplication()).getNb_follower()));
+            }
+        });
 
     }
 
