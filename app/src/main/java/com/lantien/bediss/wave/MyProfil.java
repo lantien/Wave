@@ -119,4 +119,23 @@ public class MyProfil extends Application {
 
     private Drawable image;
 
+    public long getNb_follow() {
+        return nb_follow;
+    }
+
+    public void setNb_follow(long nb_follow) {
+        this.nb_follow = nb_follow;
+    }
+
+    long nb_follow;
+
+    long nb_follower;
+
+    public long getNb_follower() {
+        return nb_follower;
+    }
+
+    public void setNb_follower(long nb_follower) {
+        this.nb_follower = nb_follower;
+    }
 }

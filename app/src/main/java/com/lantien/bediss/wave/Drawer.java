@@ -1,17 +1,14 @@
 package com.lantien.bediss.wave;
 
-import android.app.Application;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -48,6 +45,8 @@ Drawer extends AppCompatActivity
 
 
     private String userID;
+
+    int areDataAvaible = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +127,8 @@ Drawer extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        Log.d(TAG, "CLICKED SOMETHING");
+
         if (id == R.id.profil) {
             // Handle the camera action
             String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -161,14 +162,40 @@ Drawer extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        updateDrawer();
-    }//onActivityResult
+        setImgDrawer();
+        setDrawer();
+    }
+
+    private void setDrawer() {
+
+        TextView txtName = findViewById(R.id.displayName);
+        TextView txtUsername = findViewById(R.id.displayUsername);
+        TextView txtnb_Follow = findViewById(R.id.displayFollowDrawer);
+        TextView txtnb_Follower = findViewById(R.id.displayFollowerDrawer);
+
+        txtName.setText(((MyProfil) getApplication()).getName());
+        txtUsername.setText("@" + ((MyProfil) getApplication()).getUsername());
+        txtnb_Follow.setText(String.valueOf(((MyProfil) getApplication()).getNb_follow()));
+        txtnb_Follower.setText(String.valueOf(((MyProfil) getApplication()).getNb_follower()));
+
+
+    }
+
+    private void setImgDrawer() {
+        ImageView imgView = findViewById(R.id.picProfile);
+        imgView.setImageDrawable( ((MyProfil) getApplication()).getImage());
+    }
+
+    private void setItemClick(int a) {
+        if(a == 2) {
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+        }
+    }
 
     private void updateDrawer() {
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
-        final View header=navigationView.getHeaderView(0);
+
 
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -183,15 +210,16 @@ Drawer extends AppCompatActivity
             @Override
             public void onSuccess(byte[] bytes) {
                 // Data for "images/island.jpg" is returns, use this as needed
+                areDataAvaible++;
                 Log.e(TAG, "Succes image");
 
 
                 Drawable image = new BitmapDrawable(getResources(),BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
 
                 ((MyProfil) getApplication()).setImage(image);
+                setImgDrawer();
+                setItemClick(areDataAvaible);
 
-                ImageView imgView = findViewById(R.id.picProfile);
-                imgView.setImageDrawable(image);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -207,22 +235,23 @@ Drawer extends AppCompatActivity
 
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                areDataAvaible++;
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document != null && document.exists()) {
                         Log.e(TAG, "DocumentSnapshot data: " + document.getData());
 
-                        String name = document.getString("name");
-                        String username = document.getString("username");
-                        String currentPlaying = document.getString("currentlyPlaying");
+                        ((MyProfil) getApplication()).setName(document.getString("name"));
+                        ((MyProfil) getApplication()).setUsername(document.getString("username"));
+                        ((MyProfil) getApplication()).setBio(document.getString("bio"));
+                        ((MyProfil) getApplication()).setLocation(document.getString("location"));
+                        ((MyProfil) getApplication()).setWebsite(document.getString("website"));
+                        ((MyProfil) getApplication()).setNb_follow(document.getLong("nb_follow"));
+                        ((MyProfil) getApplication()).setNb_follower(document.getLong("nb_follower"));
 
-                        TextView txtName = findViewById(R.id.displayName);
-                        TextView txtUsername = findViewById(R.id.displayUsername);
-                        TextView txtCurrent = findViewById(R.id.displayCurrrentMusic);
+                        setDrawer();
 
-                        txtName.setText(name);
-                        txtUsername.setText("@" + username);
-                        txtCurrent.setText(currentPlaying);
 
                     } else {
                         Log.e(TAG, "No such document");
@@ -230,6 +259,8 @@ Drawer extends AppCompatActivity
                 } else {
                     Log.e(TAG, "get failed with ", task.getException());
                 }
+
+                setItemClick(areDataAvaible);
             }
         });
     }

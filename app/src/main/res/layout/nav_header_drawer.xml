@@ -78,7 +78,7 @@
         tools:layout_conversion_absoluteWidth="57dp" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/displayFollowerDrawer"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
@@ -108,12 +108,11 @@
         tools:layout_conversion_absoluteWidth="61dp" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/displayFollowDrawer"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:gravity="center"
         android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
         android:text="100M"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#3C4867"

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -26,30 +25,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.Transaction;
 import com.google.firebase.functions.FirebaseFunctions;
-import com.google.firebase.functions.FirebaseFunctionsException;
-import com.google.firebase.functions.HttpsCallableResult;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 public class show_profil extends AppCompatActivity {
 
@@ -86,6 +76,8 @@ public class show_profil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_profil);
 
+        userID = ((MyProfil) getApplication()).getUserID();
+
         mFunctions = FirebaseFunctions.getInstance();
 
         updateProfilText();
@@ -104,6 +96,8 @@ public class show_profil extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+
 
 
     }
@@ -194,93 +188,159 @@ public class show_profil extends AppCompatActivity {
         }
     }
 
+    private void setData(DocumentSnapshot document) {
+
+        String username = document.getString("username");
+        String name = document.getString("name");
+        String bio = document.getString("bio");
+        String location = document.getString("location");
+        String website = document.getString("website");
+        String currentlyPlaying = document.getString("currentlyPlaying");
+
+        TextView tvUsername = findViewById(R.id.displayUsername);
+        TextView tvName = findViewById(R.id.displayName);
+        TextView tvLocation = findViewById(R.id.displayLocation);
+        TextView tvBio = findViewById(R.id.displayBio);
+        TextView tvWebsite = findViewById(R.id.displayWebsite);
+        //TextView tvCurrentMusic = findViewById(R.id.displayCurrentMusicProf);
+
+        tvUsername.setText(username);
+        tvName.setText(name);
+        tvBio.setText(bio);
+
+        ImageView websiteImg = findViewById(R.id.websiteImage);
+        ImageView locationImg = findViewById(R.id.locationImage);
+
+
+
+        if(location.length() != 0) {
+
+            locationImg.setVisibility(View.VISIBLE);
+            tvLocation.setText(location);
+        } else {
+            tvLocation.setVisibility(View.GONE);
+            tvLocation.setVisibility(View.GONE);
+        }
+
+        if(location.length() != 0) {
+
+            websiteImg.setVisibility(View.VISIBLE);
+            tvWebsite.setText(website);
+        }
+        else {
+            tvWebsite.setVisibility(View.GONE);
+            tvWebsite.setVisibility(View.GONE);
+        }
+        //tvCurrentMusic.setText(currentlyPlaying);
+    }
+
+    private void setuserData() {
+
+        String username = ((MyProfil) getApplication()).getUsername();
+        String name = ((MyProfil) getApplication()).getName();
+        String bio = ((MyProfil) getApplication()).getBio();
+        String location = ((MyProfil) getApplication()).getLocation();
+        String website = ((MyProfil) getApplication()).getWebsite();
+        String currentlyPlaying = "";
+        String nb_follow = String.valueOf(((MyProfil) getApplication()).getNb_follow());
+        String nb_follower = String.valueOf(((MyProfil) getApplication()).getNb_follower());
+
+        TextView tvUsername = findViewById(R.id.displayUsername);
+        TextView tvName = findViewById(R.id.displayName);
+        TextView tvLocation = findViewById(R.id.displayLocation);
+        TextView tvBio = findViewById(R.id.displayBio);
+        TextView tvWebsite = findViewById(R.id.displayWebsite);
+        TextView tvnb_follow = findViewById(R.id.displayFollow);
+        TextView tvnb_follower = findViewById(R.id.displayFollowers);
+        //TextView tvCurrentMusic = findViewById(R.id.displayCurrentMusicProf);
+
+        tvUsername.setText(username);
+        tvName.setText(name);
+        tvBio.setText(bio);
+        tvnb_follow.setText(nb_follow);
+        tvnb_follower.setText(nb_follower);
+
+        ImageView websiteImg = findViewById(R.id.websiteImage);
+        ImageView locationImg = findViewById(R.id.locationImage);
+
+
+
+        if(location.length() != 0) {
+
+            locationImg.setVisibility(View.VISIBLE);
+            tvLocation.setText(location);
+        } else {
+            tvLocation.setVisibility(View.GONE);
+            tvLocation.setVisibility(View.GONE);
+        }
+
+        if(location.length() != 0) {
+
+            websiteImg.setVisibility(View.VISIBLE);
+            tvWebsite.setText(website);
+        }
+        else {
+            tvWebsite.setVisibility(View.GONE);
+            tvWebsite.setVisibility(View.GONE);
+        }
+        //tvCurrentMusic.setText(currentlyPlaying);
+
+        Drawable image = ((MyProfil) getApplication()).getImage();
+
+        ImageView imgView = findViewById(R.id.displayPicture);
+        imgView.setImageDrawable(image);
+    }
+
     public void updateProfilText() { //
         Bundle b = getIntent().getExtras();
 
+
+
         if( b != null ) {
+
             final String receivedID = b.getString("idProfil");
-
-            updateImage(receivedID);
-
-            Log.e(TAG, "On affiche le profil : " + receivedID);
-
-            DocumentReference docRef = db.collection("users").document(receivedID);
-
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-
-                    if (task.isSuccessful()) {
-
-                        DocumentSnapshot document = task.getResult();
-
-                        if (document != null && document.exists()) {
-
-                            Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-
-                            String username = document.getString("username");
-                            String name = document.getString("name");
-                            String bio = document.getString("bio");
-                            String location = document.getString("location");
-                            String website = document.getString("website");
-                            String currentlyPlaying = document.getString("currentlyPlaying");
-
-                            TextView tvUsername = findViewById(R.id.displayUsername);
-                            TextView tvName = findViewById(R.id.displayName);
-                            TextView tvLocation = findViewById(R.id.displayLocation);
-                            TextView tvBio = findViewById(R.id.displayBio);
-                            TextView tvWebsite = findViewById(R.id.displayWebsite);
-                            //TextView tvCurrentMusic = findViewById(R.id.displayCurrentMusicProf);
-
-                            tvUsername.setText(username);
-                            tvName.setText(name);
-                            tvBio.setText(bio);
-
-                            ImageView websiteImg = findViewById(R.id.websiteImage);
-                            ImageView locationImg = findViewById(R.id.locationImage);
-
-
-
-                            if(location.length() != 0) {
-
-                                locationImg.setVisibility(View.VISIBLE);
-                                tvLocation.setText(location);
-                            } else {
-                                tvLocation.setVisibility(View.GONE);
-                                tvLocation.setVisibility(View.GONE);
-                            }
-
-                            if(location.length() != 0) {
-
-                                websiteImg.setVisibility(View.VISIBLE);
-                                tvWebsite.setText(website);
-                            }
-                            else {
-                                tvWebsite.setVisibility(View.GONE);
-                                tvWebsite.setVisibility(View.GONE);
-                            }
-                            //tvCurrentMusic.setText(currentlyPlaying);
-
-                        } else {
-
-                            Log.d(TAG, "No such document");
-                        }
-
-                    } else {
-
-                        Log.d(TAG, "get failed with ", task.getException());
-                    }
-                }
-            });
-
-            userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
             if(userID.equals(receivedID)) {
 
+                Log.e(TAG, "On affiche le profil : " + receivedID);
+
+                setuserData();
                 Button setProf = findViewById(R.id.editProfil);
                 setProf.setVisibility(View.VISIBLE);
                 setListener();
             } else { // should we show follow button or not etc...
+
+                updateImage(receivedID);
+
+                Log.e(TAG, "On affiche le profil : " + receivedID);
+
+                DocumentReference docRef = db.collection("users").document(receivedID);
+
+                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                        if (task.isSuccessful()) {
+
+                            DocumentSnapshot document = task.getResult();
+
+                            if (document != null && document.exists()) {
+
+                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                setData(document);
+
+
+                            } else {
+
+                                Log.d(TAG, "No such document");
+                            }
+
+                        } else {
+
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                });
 
                 DocumentReference followRef = db.collection("follow_"+userID).document(receivedID);
                 followRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -536,7 +596,7 @@ public class show_profil extends AppCompatActivity {
 
         if (requestCode == 1 && resultCode == RESULT_OK)  {
             Log.e(TAG, "ACTIVITY RESULT BACK DONC UPDATE");
-            //updateImage(userID);
+            setuserData();
         } else {
             Log.e(TAG, "ERREUR REQUEST CODE");
         }

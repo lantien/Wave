@@ -22,12 +22,17 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class setProfil extends AppCompatActivity {
 
@@ -47,6 +52,23 @@ public class setProfil extends AppCompatActivity {
 
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        ImageView mImageView = findViewById(R.id.setImagePost);
+
+        mImageView.setImageDrawable(((MyProfil) getApplication()).getImage());
+
+
+        final EditText setNom = findViewById(R.id.setNom);
+        setNom.setText(((MyProfil) getApplication()).getName());
+
+        final EditText setBio = findViewById(R.id.setBio);
+        setBio.setText(((MyProfil) getApplication()).getBio());
+
+        final EditText setLocation = findViewById(R.id.setLocalisation);
+        setLocation.setText(((MyProfil) getApplication()).getLocation());
+
+        final EditText setWebsite = findViewById(R.id.setWebLink);
+        setWebsite.setText(((MyProfil) getApplication()).getWebsite());
+
         Button signInButton = findViewById(R.id.setChanges);
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -54,24 +76,33 @@ public class setProfil extends AppCompatActivity {
                 // Code here executes on main thread after user presses button
                 Log.d(TAG, "Upload clicked");
 
-                    EditText nom = findViewById(R.id.inputNom);
-                    EditText prenom = findViewById(R.id.inputUsername);
+                DocumentReference myProf = db.collection("users").document(userID);
 
-                    String Snom = nom.getText().toString();
-                    String Sprenom = prenom.getText().toString();
+                Map<String, Object> data = new HashMap<>();
 
-                    User user = new User(Snom, Sprenom, "03/03/2000", "","","","","");
+                String name = setNom.getText().toString();
+                String bio = setBio.getText().toString();
+                String location = setLocation.getText().toString();
+                String website = setWebsite.getText().toString();
 
-                    db.collection("users").document(userID).set(user);
+                ((MyProfil) getApplication()).setName(name);
+                ((MyProfil) getApplication()).setBio(bio);
+                ((MyProfil) getApplication()).setLocation(location);
+                ((MyProfil) getApplication()).setWebsite(website);
+
+                data.put("name", name);
+                data.put("bio", bio);
+                data.put("location", location);
+                data.put("website", website);
+
+
+                myProf.update(data);
 
                     if(myImage != null) {
                         uploadImage();
-                    } else {
-                        goBack();
                     }
 
-
-
+                    goBack();
             }
         });
 
@@ -96,7 +127,6 @@ public class setProfil extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                 Log.d(TAG, "Upload succes");
-                goBack();
             }
         });
 
@@ -115,7 +145,7 @@ public class setProfil extends AppCompatActivity {
         if (requestCode == 0 && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             myImage = data.getData( );
-            uploadImage();
+            updateImage();
             Toast.makeText(this, "Get image URI", Toast.LENGTH_SHORT).show();
 
         } else {

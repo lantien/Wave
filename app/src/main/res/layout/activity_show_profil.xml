@@ -211,7 +211,7 @@
 
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/displayFollow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
@@ -238,13 +238,13 @@
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textColor="#657786"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toEndOf="@+id/textView15"
+                    app:layout_constraintStart_toEndOf="@+id/displayFollow"
                     app:layout_constraintTop_toBottomOf="@+id/displayWebsite"
 
                     />
 
                 <TextView
-                    android:id="@+id/textView19"
+                    android:id="@+id/displayFollowers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
@@ -273,7 +273,7 @@
                     android:textColor="#657786"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView19"
+                    app:layout_constraintStart_toEndOf="@+id/displayFollowers"
                     app:layout_constraintTop_toBottomOf="@+id/displayWebsite" />
 
                 <android.support.constraint.Guideline
