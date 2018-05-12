@@ -36,7 +36,7 @@
                 android:layout_marginStart="63dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/roboto"
-                android:text="Abeg you people should come and judge this kjdsh kj shfkjsdhfskdjfhsdkj matter. What should the wife do in this case? "
+                android:text="Abeg you people should come and judge shfkjsdhfskdjfhsdkj matter. What should the wife do in this case? "
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="13sp"
                 card_view:layout_constraintStart_toStartOf="parent"
@@ -205,7 +205,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:text="35"
-                android:textColor="#303952"
+                android:textColor="#17BF63"
                 android:textSize="12sp"
                 android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
@@ -219,7 +219,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:text="150"
-                android:textColor="#D80027"
+                android:textColor="#E0245E"
                 android:textSize="12sp"
                 android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
@@ -255,7 +255,6 @@
                 android:textColor="#898686"
                 android:textSize="12sp"
                 android:visibility="gone"
-
                 card_view:layout_constraintStart_toEndOf="@+id/displayNameRepost"
                 card_view:layout_constraintTop_toTopOf="parent" />
 
