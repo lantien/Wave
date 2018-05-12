@@ -73,13 +73,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginStart="68dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="66dp"
         android:fontFamily="@font/roboto"
         android:text="Vous avez déjà un compte ?"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#FFFFFF"
         android:textSize="11.5sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -96,13 +99,6 @@
         app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="66dp" />
 
 
 </android.support.constraint.ConstraintLayout>
