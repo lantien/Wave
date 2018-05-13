@@ -30,6 +30,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -303,7 +304,7 @@ public class show_profil extends AppCompatActivity {
 
             if(userID.equals(receivedID)) {
 
-                Log.e(TAG, "On affiche le profil : " + receivedID);
+                Log.e(TAG, "On affiche MON profil : " + receivedID);
 
                 setuserData();
                 Button setProf = findViewById(R.id.editProfil);
