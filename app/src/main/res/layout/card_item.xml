@@ -31,12 +31,12 @@
 
             <TextView
                 android:id="@+id/tv_blah"
-                android:layout_width="match_parent"
+                android:layout_width="341dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="63dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/roboto"
-                android:text="Abeg you people should come and j matter. What should the wife do in this case? "
+                android:text="fdlskfsdlkfj lskdfj lksdj ls fsdf sd sdf sdf ldkj flkds lkjsd f sdf sd "
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="13sp"
                 card_view:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
                 android:id="@+id/displayName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="17dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Namra"
