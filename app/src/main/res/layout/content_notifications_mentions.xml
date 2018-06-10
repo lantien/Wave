@@ -27,7 +27,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
                 android:shape="ring"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="parent">
 
@@ -43,7 +43,7 @@
                 android:text="fdlskfsdlkfj lskdfj lksdj ls fsdf sd sdf sdf ldkj flkds lkjsd f sdf sd "
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="13sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/displayName" />
 
@@ -59,7 +59,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textColor="#000000"
                 android:textSize="15sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintStart_toEndOf="@+id/imagePost"
                 card_view:layout_constraintTop_toBottomOf="parent" />
 
@@ -73,7 +73,7 @@
                 android:text="06/06/2018"
                 android:textColor="#898686"
                 android:textSize="12sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintTop_toBottomOf="parent" />
 
@@ -87,7 +87,7 @@
                 android:layout_marginStart="63dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/ic_comment_bubble"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -95,12 +95,12 @@
             <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="15dp"
-                android:layout_height="19dp"
+                android:layout_height="17dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="65dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/ic_repost"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView5"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -113,7 +113,7 @@
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/ic_like"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView6"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -128,7 +128,7 @@
                 android:text="14"
                 android:textColor="#717070"
                 android:textSize="12sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView5"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -142,7 +142,7 @@
                 android:text="35"
                 android:textColor="#717070"
                 android:textSize="12sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView6"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -156,7 +156,7 @@
                 android:text="150"
                 android:textColor="#717070"
                 android:textSize="12sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView7"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -167,12 +167,12 @@
             <ImageView
                 android:id="@+id/imageview9"
                 android:layout_width="15dp"
-                android:layout_height="19dp"
+                android:layout_height="17dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="65dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/ic_reposted"
-                android:visibility="gone"
+                android:visibility="invisible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView5"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -185,7 +185,7 @@
                 android:layout_marginStart="70dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/ic_liked"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView6"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -200,7 +200,7 @@
                 android:text="14"
                 android:textColor="#717070"
                 android:textSize="12sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView5"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -214,7 +214,7 @@
                 android:text="35"
                 android:textColor="#17BF63"
                 android:textSize="12sp"
-                android:visibility="gone"
+                android:visibility="invisible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView6"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
@@ -228,130 +228,11 @@
                 android:text="150"
                 android:textColor="#E0245E"
                 android:textSize="12sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView7"
                 card_view:layout_constraintTop_toBottomOf="@+id/tv_blah" />
 
-            <!--- Follow -->
-
-            <ImageView
-                android:id="@+id/plus_follow"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ic_plus"
-                card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imagePost_follow_first"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:shape="ring"
-                android:visibility="visible"
-                card_view:layout_constraintStart_toEndOf="@id/plus_follow"
-                card_view:layout_constraintTop_toBottomOf="parent">
-
-            </de.hdodenhof.circleimageview.CircleImageView>
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imagePost_follow_second"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:shape="ring"
-                android:visibility="visible"
-                card_view:layout_constraintStart_toEndOf="@id/imagePost_follow_first"
-                card_view:layout_constraintTop_toBottomOf="parent">
-
-            </de.hdodenhof.circleimageview.CircleImageView>
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imagePost_follow_third"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:shape="ring"
-                android:visibility="visible"
-                card_view:layout_constraintStart_toEndOf="@id/imagePost_follow_second"
-                card_view:layout_constraintTop_toBottomOf="parent">
-
-            </de.hdodenhof.circleimageview.CircleImageView>
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imagePost_follow_fourth"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:shape="ring"
-                android:visibility="visible"
-                card_view:layout_constraintStart_toEndOf="@id/imagePost_follow_third"
-                card_view:layout_constraintTop_toBottomOf="parent">
-
-            </de.hdodenhof.circleimageview.CircleImageView>
-
-
-            <TextView
-                android:id="more_followed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="15dp"
-                android:text="..."
-                card_view:layout_constraintStart_toEndOf="@id/imagePost_follow_fourth"
-                card_view:layout_constraintTop_toBottomOf="parent"
-                />
-
-            <TextView
-                android:id="@+id/NameFollow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="58dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Namra"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toBottomOf="@+id/imagePost_follow_first" />
-
-            <TextView
-                android:id="@+id/follow_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/roboto"
-                android:text="Followed you"
-                android:textColor="#000000"
-                android:visibility="visible"
-                android:textSize="14sp"
-                card_view:layout_constraintStart_toEndOf="@+id/NameFollow"
-                card_view:layout_constraintTop_toBottomOf="@+id/imagePost_follow_first" />
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/roboto"
-                android:text="and x others followed you "
-                android:textColor="#000000"
-                android:textSize="14sp"
-                android:visibility="invisible"
-                card_view:layout_constraintStart_toEndOf="@+id/NameFollow"
-                card_view:layout_constraintTop_toBottomOf="@+id/imagePost_follow_first"
-
-                />
 
             <View
                 android:layout_width="fill_parent"

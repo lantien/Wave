@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 26
@@ -52,6 +53,7 @@ dependencies {
 
     implementation 'com.spotify.android:auth:1.0.0-alpha'
     implementation(name: 'spotify-player-24-noconnect-2.20b', ext: 'aar')
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 }
 
@@ -66,3 +68,6 @@ dependencies {
 
 
 apply plugin: 'com.google.gms.google-services'
+repositories {
+    mavenCentral()
+}
