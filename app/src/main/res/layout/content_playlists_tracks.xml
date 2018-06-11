@@ -16,7 +16,7 @@
             android:layout_height="60dp">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/cover_song"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginBottom="8dp"
@@ -34,34 +34,36 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Nom playlist"
+                android:text="DNA."
                 android:textColor="#000"
                 android:textSize="14sp"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintStart_toEndOf="@+id/imageView2"
+                card_view:layout_constraintStart_toEndOf="@+id/cover_song"
                 card_view:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintVertical_bias="0.269" />
 
             <TextView
+                android:id="@+id/artist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="8dp"
-                android:text="0 titre"
+                android:text="Kendrick Lamar"
                 android:textSize="12sp"
                 android:fontFamily="@font/montserrat"
                 android:textColor="#838383"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintStart_toEndOf="@+id/imageView2"
+                card_view:layout_constraintStart_toEndOf="@+id/cover_song"
                 card_view:layout_constraintTop_toBottomOf="@+id/textView8" />
 
             <ImageView
+                android:id="@+id/options"
                 android:layout_width="14dp"
                 android:layout_height="14dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/ic_chevron"
+                android:background="@drawable/ic_options"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent" />

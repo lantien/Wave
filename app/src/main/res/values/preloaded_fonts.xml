@@ -2,6 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aguafina_script</item>
+        <item>@font/montserrat</item>
         <item>@font/roboto_medium</item>
     </array>
 </resources>
